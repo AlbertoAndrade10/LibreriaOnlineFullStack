@@ -1,0 +1,153 @@
+<div class="min-h-screen bg-gray-50 flex flex-col ">
+
+    <div class="flex flex-1">
+        <!-- Admin Sidebar -->
+        <app-admin-sidebar [isOpen]="isSidebarOpen" (menuToggle)="toggleSidebar()">
+        </app-admin-sidebar>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            <!-- Header Section -->
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">Gestión de Pedidos</h1>
+                    <p class="text-gray-600">Administra los pedidos de los usuarios</p>
+                </div>
+                <div class="mt-4 md:mt-0 flex space-x-2">
+                    <button class="bg-white text-gray-700 px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50">
+                        Exportar
+                    </button>
+                    <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">
+                        Nuevo Pedido
+                    </button>
+                </div>
+            </div>
+
+            <!-- Status Filters -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-6">
+                <div class="flex flex-wrap gap-2">
+                    <button class="px-4 py-2 rounded-full bg-indigo-100 text-indigo-800 font-medium">Todos (45)</button>
+                    <button class="px-4 py-2 rounded-full bg-yellow-100 text-yellow-800 font-medium">Pendientes
+                        (12)</button>
+                    <button class="px-4 py-2 rounded-full bg-blue-100 text-blue-800 font-medium">En proceso (8)</button>
+                    <button class="px-4 py-2 rounded-full bg-green-100 text-green-800 font-medium">Completados
+                        (20)</button>
+                    <button class="px-4 py-2 rounded-full bg-red-100 text-red-800 font-medium">Cancelados (5)</button>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                    <h3 class="text-lg font-semibold text-gray-800">Pedidos (45 resultados)</h3>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-600">Mostrar:</span>
+                        <select class="border border-gray-300 rounded px-2 py-1 text-sm">
+                            <option>10</option>
+                            <option selected>25</option>
+                            <option>50</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Pedido</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Cliente</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Fecha</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Total</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Artículos</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Estado</th>
+                                <th
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">#ORD-2024-00123</div>
+                                    <div class="text-sm text-gray-500">Método: Tarjeta</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">Juan Pérez</div>
+                                    <div class="text-sm text-gray-500">juan-ejemplo.com</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15/03/2024</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">€87.50</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">3 artículos</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                        Completado
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <button class="text-indigo-600 hover:text-indigo-900 mr-3">Ver</button>
+                                    <button class="text-gray-600 hover:text-gray-900">Factura</button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">#ORD-2024-00124</div>
+                                    <div class="text-sm text-gray-500">Método: PayPal</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <div class="text-sm font-medium text-gray-900">María García</div>
+                                    <div class="text-sm text-gray-500">maria-ejemplo.com</div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">15/03/2024</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">€45.99</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2 artículos</td>
+                                <td class="px-6 py-4 whitespace-nowrap">
+                                    <span
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                        Pendiente
+                                    </span>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                    <button class="text-indigo-600 hover:text-indigo-900 mr-3">Ver</button>
+                                    <button class="text-gray-600 hover:text-gray-900">Factura</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="px-6 py-4 border-t border-gray-200 flex items-center justify-between">
+                    <div class="text-sm text-gray-700">
+                        Mostrando <span class="font-medium">1</span> a <span class="font-medium">10</span> de <span
+                            class="font-medium">45</span> resultados
+                    </div>
+                    <div class="flex space-x-2">
+                        <button
+                            class="px-3 py-1 rounded border border-gray-300 text-sm hover:bg-gray-50">Anterior</button>
+                        <button
+                            class="px-3 py-1 rounded border border-gray-300 text-sm bg-indigo-600 text-white">1</button>
+                        <button class="px-3 py-1 rounded border border-gray-300 text-sm hover:bg-gray-50">2</button>
+                        <button class="px-3 py-1 rounded border border-gray-300 text-sm hover:bg-gray-50">3</button>
+                        <button class="px-3 py-1 rounded border border-gray-300 text-sm hover:bg-gray-50">4</button>
+                        <button class="px-3 py-1 rounded border border-gray-300 text-sm hover:bg-gray-50">5</button>
+                        <button
+                            class="px-3 py-1 rounded border border-gray-300 text-sm hover:bg-gray-50">Siguiente</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>

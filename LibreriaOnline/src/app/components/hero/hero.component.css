@@ -1,0 +1,10 @@
+/* Opcional: puedes añadir estilos personalizados aquí si los necesitas */
+section {
+    min-height: 500px;
+}
+
+@media (min-width: 768px) {
+    section {
+        min-height: 600px;
+    }
+}
