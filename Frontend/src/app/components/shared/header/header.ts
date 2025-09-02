@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnDestroy, ViewChild, ElementRef, AfterViewInit, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 RouterLink
 
@@ -14,6 +14,7 @@ export class Header implements AfterViewInit, OnDestroy {
   @ViewChild('menuClose') menuClose!: ElementRef<HTMLButtonElement>;
   @ViewChild('menuOverlay') menuOverlay!: ElementRef<HTMLDivElement>;
   @ViewChild('mobileMenu') mobileMenu!: ElementRef<HTMLDivElement>;
+  @ViewChild('headerElement') headerElement!: ElementRef<HTMLElement>;
 
   private cleanupFunctions: (() => void)[] = [];
 
@@ -24,6 +25,24 @@ export class Header implements AfterViewInit, OnDestroy {
   ngOnDestroy() {
     // Limpiar todos los event listeners
     this.cleanupFunctions.forEach(cleanup => cleanup());
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const header = this.headerElement.nativeElement;
+    const scrollY = window.scrollY;
+
+    if (scrollY > 50) {
+      // Cuando se hace scroll, hacer el header ligeramente transparente
+      header.classList.add('bg-blue-600/90');
+      header.classList.add('backdrop-blur-sm');
+      header.classList.remove('bg-blue-600');
+    } else {
+      // Volver al estado normal
+      header.classList.remove('bg-blue-600/90');
+      header.classList.remove('backdrop-blur-sm');
+      header.classList.add('bg-blue-600');
+    }
   }
 
   private setupMenuEvents(): void {
