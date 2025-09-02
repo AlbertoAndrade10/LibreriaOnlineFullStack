@@ -1,0 +1,79 @@
+import { CommonModule } from '@angular/common';
+import { Component, Renderer2, OnDestroy, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+
+
+@Component({
+  selector: 'app-header',
+  imports: [CommonModule],
+  templateUrl: './header.html',
+  styleUrl: './header.css'
+})
+export class Header implements AfterViewInit, OnDestroy {
+  @ViewChild('menuToggle') menuToggle!: ElementRef<HTMLButtonElement>;
+  @ViewChild('menuClose') menuClose!: ElementRef<HTMLButtonElement>;
+  @ViewChild('menuOverlay') menuOverlay!: ElementRef<HTMLDivElement>;
+  @ViewChild('mobileMenu') mobileMenu!: ElementRef<HTMLDivElement>;
+
+  private cleanupFunctions: (() => void)[] = [];
+
+  ngAfterViewInit() {
+    this.setupMenuEvents();
+  }
+
+  ngOnDestroy() {
+    // Limpiar todos los event listeners
+    this.cleanupFunctions.forEach(cleanup => cleanup());
+  }
+
+  private setupMenuEvents(): void {
+    // Verificar que todos los elementos existen
+    if (!this.menuToggle || !this.menuClose || !this.menuOverlay || !this.mobileMenu) {
+      console.warn('Algunos elementos del menú no se encontraron');
+      return;
+    }
+
+    const menuToggleEl = this.menuToggle.nativeElement;
+    const menuCloseEl = this.menuClose.nativeElement;
+    const menuOverlayEl = this.menuOverlay.nativeElement;
+    const mobileMenuEl = this.mobileMenu.nativeElement;
+
+    // Función para abrir el menú
+    const openMenu = () => {
+      mobileMenuEl.classList.remove('translate-x-full');
+      mobileMenuEl.classList.add('translate-x-0');
+      menuOverlayEl.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    };
+
+    // Función para cerrar el menú
+    const closeMenu = () => {
+      mobileMenuEl.classList.remove('translate-x-0');
+      mobileMenuEl.classList.add('translate-x-full');
+      menuOverlayEl.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    };
+
+    // Agregar event listeners
+    menuToggleEl.addEventListener('click', openMenu);
+    menuCloseEl.addEventListener('click', closeMenu);
+    menuOverlayEl.addEventListener('click', closeMenu);
+
+    // Cerrar menú al hacer clic en los enlaces
+    const menuLinks = Array.from(mobileMenuEl.querySelectorAll('a'));
+    menuLinks.forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Guardar funciones de limpieza
+    this.cleanupFunctions.push(
+      () => menuToggleEl.removeEventListener('click', openMenu),
+      () => menuCloseEl.removeEventListener('click', closeMenu),
+      () => menuOverlayEl.removeEventListener('click', closeMenu)
+    );
+
+    // Limpiar event listeners de los enlaces
+    menuLinks.forEach(link => {
+      this.cleanupFunctions.push(() => link.removeEventListener('click', closeMenu));
+    });
+  }
+}

@@ -2,9 +2,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, Inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import AOS from 'aos';
+import { BaseLayout } from "./components/layouts/base-layout/base-layout";
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, BaseLayout],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
