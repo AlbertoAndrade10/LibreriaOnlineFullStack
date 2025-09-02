@@ -32,8 +32,8 @@ export class Header implements AfterViewInit, OnDestroy {
     const header = this.headerElement.nativeElement;
     const scrollY = window.scrollY;
 
+    //funciones para cunado se hace scroll
     if (scrollY > 50) {
-      // Cuando se hace scroll, hacer el header ligeramente transparente
       header.classList.add('bg-blue-600/90');
       header.classList.add('backdrop-blur-sm');
       header.classList.remove('bg-blue-600');
@@ -45,8 +45,8 @@ export class Header implements AfterViewInit, OnDestroy {
     }
   }
 
+  // Verificar que todos los elementos existen
   private setupMenuEvents(): void {
-    // Verificar que todos los elementos existen
     if (!this.menuToggle || !this.menuClose || !this.menuOverlay || !this.mobileMenu) {
       console.warn('Algunos elementos del menú no se encontraron');
       return;
@@ -57,7 +57,7 @@ export class Header implements AfterViewInit, OnDestroy {
     const menuOverlayEl = this.menuOverlay.nativeElement;
     const mobileMenuEl = this.mobileMenu.nativeElement;
 
-    // Función para abrir el menú
+    // funcion para abrir el menu
     const openMenu = () => {
       mobileMenuEl.classList.remove('translate-x-full');
       mobileMenuEl.classList.add('translate-x-0');
@@ -65,7 +65,7 @@ export class Header implements AfterViewInit, OnDestroy {
       document.body.classList.add('overflow-hidden');
     };
 
-    // Función para cerrar el menú
+    // función para cerrar el menu
     const closeMenu = () => {
       mobileMenuEl.classList.remove('translate-x-0');
       mobileMenuEl.classList.add('translate-x-full');
@@ -73,25 +73,25 @@ export class Header implements AfterViewInit, OnDestroy {
       document.body.classList.remove('overflow-hidden');
     };
 
-    // Agregar event listeners
+    // event listeners
     menuToggleEl.addEventListener('click', openMenu);
     menuCloseEl.addEventListener('click', closeMenu);
     menuOverlayEl.addEventListener('click', closeMenu);
 
-    // Cerrar menú al hacer clic en los enlaces
+    // cerrar menu al seleccionar enlace
     const menuLinks = Array.from(mobileMenuEl.querySelectorAll('a'));
     menuLinks.forEach(link => {
       link.addEventListener('click', closeMenu);
     });
 
-    // Guardar funciones de limpieza
+    // guarda las funciones
     this.cleanupFunctions.push(
       () => menuToggleEl.removeEventListener('click', openMenu),
       () => menuCloseEl.removeEventListener('click', closeMenu),
       () => menuOverlayEl.removeEventListener('click', closeMenu)
     );
 
-    // Limpiar event listeners de los enlaces
+    // Limpiar event listeners 
     menuLinks.forEach(link => {
       this.cleanupFunctions.push(() => link.removeEventListener('click', closeMenu));
     });
