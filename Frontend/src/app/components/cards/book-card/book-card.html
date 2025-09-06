@@ -1,0 +1,41 @@
+<!-- Tarjeta del libro -->
+<div
+    class="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:-translate-y-1 overflow-hidden h-full flex flex-col">
+    <!-- Imagen del libro -->
+    <div class="relative overflow-hidden">
+        <img [src]="bookImage" [alt]="title"
+            class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105">
+        <div class="absolute inset-0 bg-blue-300 bg-opacity-0 hover:bg-opacity-10 transition-all duration-300"></div>
+    </div>
+
+    <!-- Contenido -->
+    <div class="p-5 flex-grow flex flex-col">
+        <h3 class="text-lg font-bold text-gray-800 mb-2 line-clamp-2">{{ title }}</h3>
+        <p class="text-gray-600 text-sm mb-4">por {{ author }}</p>
+
+        <!-- Descripción corta -->
+        <p class="text-gray-700 text-sm mb-4 flex-grow line-clamp-3">{{ shortDescription }}</p>
+
+        <!-- Botones -->
+        <div class="flex flex-col sm:flex-row gap-2 mt-auto">
+            <button
+                class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+                Ver libro
+            </button>
+            <button
+                class="flex-1 bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center">
+                <svg class="w-4 h-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+                Añadir
+            </button>
+        </div>
+    </div>
+</div>

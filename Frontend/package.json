@@ -48,6 +48,7 @@
     "@types/express": "^5.0.1",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^20.17.19",
+    "@types/uikit": "^3.23.0",
     "animate.css": "^4.1.1",
     "jasmine-core": "~5.9.0",
     "karma": "~6.4.0",
