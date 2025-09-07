@@ -1,8 +1,8 @@
-# Libreria Online - Spring Boot
+# Libreria Online - Spring Boot + Angular
 
 Este proyecto es una aplicación de ecommerce de libros construida con arquitectura de microservicios usando Spring Boot.
 
-## 🧩 Microservicios Incluidos
+## Microservicios Incluidos
 
 | Microservicio | Descripción |
 |---------------|-------------|
