@@ -7,7 +7,7 @@ Este proyecto es una aplicación de ecommerce de libros construida con arquitect
 | Microservicio | Descripción |
 |---------------|-------------|
 | `Api-Gateway` | Punto de entrada único para todos los microservicios, seguridad con tokens |
-| `Auth-Service¨(Spring Boot + SupaBase)` | Registro y autenticación de usuarios |
+| `Auth-Service (Spring Boot + SupaBase)` | Registro y autenticación de usuarios |
 | `Books-Service` | Gestión de libros |
 | `Cart-Service` | Gestión del carrito |
 | `Order-Microservice` | Punto de entrada único para todos los servicios |
