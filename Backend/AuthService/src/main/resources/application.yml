@@ -5,7 +5,7 @@ supabase:
       key: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNieXZwYmNlbmVvcWVheGdpaWd0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NzIzODEwNiwiZXhwIjoyMDcyODE0MTA2fQ.tnluNhwzpTfwEeQrvlSubkLqqxdqxvsZ_hqLu-_vBF8
 
 server:
-  port: 8081
+  port: 8082
 
 spring:
   application:
