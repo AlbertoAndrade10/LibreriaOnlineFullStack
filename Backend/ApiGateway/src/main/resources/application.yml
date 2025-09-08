@@ -1,18 +1,11 @@
 server:
-    port: 8081
-
+  port: 8081
 
 spring:
   application:
     name: ApiGateway
 
-
 eureka:
-    client:
-        service-url:
-            defaultZone: http://localhost:8761/eureka/
-        fetch-registry: true
-        register-with-eureka: true
-    
-    instance:
-        prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
