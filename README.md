@@ -1,6 +1,6 @@
 # Libreria Online - Spring Boot + Angular
 
-Este proyecto es una aplicación de ecommerce de libros construida con arquitectura de microservicios usando Spring Boot.
+Este proyecto es una aplicación de ecommerce de libros construida con arquitectura de microservicios usando Spring Boot para el backend y Angular para el frontend.
 
 ## Microservicios Incluidos
 
@@ -10,7 +10,7 @@ Este proyecto es una aplicación de ecommerce de libros construida con arquitect
 | `Auth-Service (Spring Boot + SupaBase)` | Registro y autenticación de usuarios |
 | `Books-Service` | Gestión de libros |
 | `Cart-Service` | Gestión del carrito |
-| `Order-Microservice` | Punto de entrada único para todos los servicios |
+| `Order-Microservice` | Gestión de pedidos |
 | `Payment-Service` | Gestión de pagos simulados usando PayPal |
 | `Inventory-Service` | Gestión de stock de libros |
 | `Config-Server` | Repositorio privado de almacenamiento para gestionar datos sensibles de la aplicación |
