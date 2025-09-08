@@ -1,4 +1,4 @@
-package com.poroflio.DiscoveryServer;
+package com.porfolio.DiscoveryServer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
