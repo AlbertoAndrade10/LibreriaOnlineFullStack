@@ -102,7 +102,6 @@ public class AuthController {
 
             HttpEntity<Map<String, Object>> entity = new HttpEntity<>(body, headers);
 
-            // ✅ Usa PUT
             ResponseEntity<String> response = restTemplate.exchange(
                     url, HttpMethod.PUT, entity, String.class);
 
@@ -118,7 +117,7 @@ public class AuthController {
 
     @PostMapping("/logout")
     public ResponseEntity<?> logout() {
-        /* -->> Se ocupa el frontend de limpiar los tokens. Hay que modificarlo usando REDIS para revocar tokens
+        /* -->> Se ocupa el frontend de limpiar los tokens. Hay que modificarlo (cuando se implemente en el futuro XD) usando REDIS para revocar tokens
          aunque estén vigentes despues de un logout <<-- */
         return ResponseEntity.ok().body(Map.of(
                 "message", "Sesión cerrada. Por favor, elimina el token del cliente."
