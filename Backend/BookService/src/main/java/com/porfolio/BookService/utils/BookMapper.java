@@ -10,7 +10,7 @@ import com.porfolio.BookService.models.Book;
 import com.porfolio.BookService.models.LiteraryGenre;
 
 @Component
-public class Mapper {
+public class BookMapper {
 
     // -->> toDTO <<-- 
     public BookDTO toDTO(Book book) {

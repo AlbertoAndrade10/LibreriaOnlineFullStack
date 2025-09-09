@@ -18,7 +18,7 @@ import com.porfolio.BookService.models.LiteraryGenre;
 import com.porfolio.BookService.repositories.AuthorRepository;
 import com.porfolio.BookService.repositories.BookRepository;
 import com.porfolio.BookService.repositories.LiteraryGenreRepository;
-import com.porfolio.BookService.utils.Mapper;
+import com.porfolio.BookService.utils.BookMapper;
 
 @Service
 @Transactional
@@ -34,7 +34,7 @@ public class BookServiceImpl implements IBookService {
     private LiteraryGenreRepository literaryGenreRepository;
 
     @Autowired
-    private Mapper mapper;
+    private BookMapper mapper;
 
     @Override
     @Transactional(readOnly = true)
