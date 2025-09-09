@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.porfolio.BookService.models.LiteraryGenre;
 
-public interface LiteraryGenreRepository extends JpaRepository<Long, LiteraryGenre> {
+public interface LiteraryGenreRepository extends JpaRepository<LiteraryGenre, Long> {
 
 }
