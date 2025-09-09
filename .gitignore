@@ -1,0 +1,12 @@
+# Archivos de MySQL
+**/*.sock
+**/*.sock.lock
+schemas/*.sock
+schemas/*.sock.lock
+
+# Archivos temporales de MySQL
+schemas/auto.cnf
+schemas/binlog.*
+schemas/ib_buffer_pool
+schemas/ibdata1
+schemas/ib_logfile*
