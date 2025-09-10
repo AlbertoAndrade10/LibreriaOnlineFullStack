@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.porfolio.BookService.dtos.BookCreateDTO;
 import com.porfolio.BookService.dtos.BookDTO;
 import com.porfolio.BookService.dtos.BookUpdateDTO;
@@ -50,26 +52,30 @@ public class BookController {
 
     @PostMapping
     public ResponseEntity<BookDTO> createBook(
-            @RequestPart("book") @Valid BookCreateDTO bookCreateDTO,
-            @RequestPart("image") MultipartFile image) {
-
+            @RequestParam("book") String bookJson,
+            @RequestParam("image") MultipartFile image) {
         try {
+            // Validar que la imagen sea obligatoria
             if (image == null || image.isEmpty()) {
-                return ResponseEntity.badRequest().body(null);
+                return ResponseEntity.badRequest()
+                        .body(null);
             }
 
-            // upload image to Cloudinary
+            // Convertir JSON string a objeto
+            ObjectMapper objectMapper = new ObjectMapper();
+            BookCreateDTO bookCreateDTO = objectMapper.readValue(bookJson, BookCreateDTO.class);
+
+            // Upload de imagen a Cloudinary
             String imageUrl = cloudinaryService.uploadImage(image);
             bookCreateDTO.setUrlImage(imageUrl);
 
-            // create book using cloudinary URL
+            // Crear el libro con la URL de la imagen
             BookDTO createdBook = bookService.createBook(bookCreateDTO);
             return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
-
         } catch (IOException e) {
-            return ResponseEntity.badRequest().build();
+            return ResponseEntity.badRequest()
+                    .body(null);
         }
-
     }
 
     @PutMapping("/{id}")

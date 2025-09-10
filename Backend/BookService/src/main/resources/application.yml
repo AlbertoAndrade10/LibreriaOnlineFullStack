@@ -14,7 +14,16 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
     database-platform: org.hibernate.dialect.MySQL8Dialect
-  
+
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      enabled: true
+      file-size-threshold: 2KB
+      location: /tmp
+        
+
   application:
     name: BookService
 
@@ -26,8 +35,12 @@ logging:
 
 server:
   port: 8083
+  tomcat:
+    max-http-form-post-size: 10MB
+      
 
 cloudinary:
-  cloud-name: ${CLOUDINARY_CLOUD_NAME:Library}
+  cloud-name: ${CLOUDINARY_CLOUD_NAME:dbcx8aofx}
   api-key: ${CLOUDINARY_API_KEY:331892227717248}
   api-secret: ${CLOUDINARY_API_SECRET:VlE5hF0Zs6Q3rByHSMV7K7bjQ8M}
+
