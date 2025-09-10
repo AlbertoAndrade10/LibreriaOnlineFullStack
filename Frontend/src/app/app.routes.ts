@@ -7,6 +7,7 @@ import { Dashboard } from './pages/dashboard/dashboard';
 import { LoginPage } from './pages/login-page/login-page';
 import { RegisterPage } from './pages/register-page/register-page';
 import { CartPage } from './pages/cart-page/cart-page';
+import { PruebasPage } from './pages/pruebas-page/pruebas-page/pruebas-page';
 
 export const routes: Routes = [
     {
@@ -43,6 +44,11 @@ export const routes: Routes = [
             {
                 path: 'cart',
                 component: CartPage
+
+            },
+            {
+                path: 'pruebas',
+                component: PruebasPage
 
             },
         ]
