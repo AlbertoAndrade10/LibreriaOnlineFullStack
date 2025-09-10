@@ -80,6 +80,8 @@ public class LiteraryGenreServiceImpl implements ILiteraryGenreService {
             throw new IllegalStateException("The Literary genre cannot be deleted because they have associated books.");
 
         }
+
+        literaryGenreRepository.delete(genre);
     }
 
 }
