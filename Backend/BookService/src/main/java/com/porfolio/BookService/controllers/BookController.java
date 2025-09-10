@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -24,8 +23,6 @@ import com.porfolio.BookService.dtos.BookDTO;
 import com.porfolio.BookService.dtos.BookUpdateDTO;
 import com.porfolio.BookService.services.BookService.IBookService;
 import com.porfolio.BookService.services.CloudinaryService.ICloudinaryService;
-
-import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/api/v1/books")
@@ -55,21 +52,21 @@ public class BookController {
             @RequestParam("book") String bookJson,
             @RequestParam("image") MultipartFile image) {
         try {
-            // Validar que la imagen sea obligatoria
+            // mandatory image
             if (image == null || image.isEmpty()) {
                 return ResponseEntity.badRequest()
                         .body(null);
             }
 
-            // Convertir JSON string a objeto
+            // to object
             ObjectMapper objectMapper = new ObjectMapper();
             BookCreateDTO bookCreateDTO = objectMapper.readValue(bookJson, BookCreateDTO.class);
 
-            // Upload de imagen a Cloudinary
+            // Upload Cloudinary url
             String imageUrl = cloudinaryService.uploadImage(image);
             bookCreateDTO.setUrlImage(imageUrl);
 
-            // Crear el libro con la URL de la imagen
+            // create book with cloudinary utl
             BookDTO createdBook = bookService.createBook(bookCreateDTO);
             return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
         } catch (IOException e) {
@@ -81,11 +78,14 @@ public class BookController {
     @PutMapping("/{id}")
     public ResponseEntity<BookDTO> updateBook(
             @PathVariable Long id,
-            @RequestPart("book") @Valid BookUpdateDTO bookUpdateDTO,
-            @RequestPart(value = "image", required = false) MultipartFile image) {
-
+            @RequestParam("book") String bookJson,
+            @RequestParam(value = "image", required = false) MultipartFile image) {
         try {
-            //-->> if a new image is provided, upload it
+            // to object
+            ObjectMapper objectMapper = new ObjectMapper();
+            BookUpdateDTO bookUpdateDTO = objectMapper.readValue(bookJson, BookUpdateDTO.class);
+
+            // if a new image is provided, upload it.
             if (image != null && !image.isEmpty()) {
                 String imageUrl = cloudinaryService.uploadImage(image);
                 bookUpdateDTO.setUrlImage(imageUrl);
@@ -96,7 +96,6 @@ public class BookController {
         } catch (IOException e) {
             return ResponseEntity.badRequest().build();
         }
-
     }
 
     @DeleteMapping("/{id}")
