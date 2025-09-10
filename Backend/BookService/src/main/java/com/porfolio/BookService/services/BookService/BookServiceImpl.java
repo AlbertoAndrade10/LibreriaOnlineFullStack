@@ -58,7 +58,7 @@ public class BookServiceImpl implements IBookService {
                 .orElseThrow(() -> new ResourceNotFoundException("Autor", bookCreateDTO.getAuthorId()));
 
         LiteraryGenre genre = literaryGenreRepository.findById(bookCreateDTO.getLiteraryGenreId())
-                .orElseThrow(() -> new ResourceNotFoundException("Literary genre", bookCreateDTO.getLiteraryGenreId()));
+                .orElseThrow(() -> new ResourceNotFoundException("Género Literario", bookCreateDTO.getLiteraryGenreId()));
 
         Book book = new Book();
         book.setBookName(bookCreateDTO.getBookName());
@@ -70,7 +70,6 @@ public class BookServiceImpl implements IBookService {
         book.setStock(bookCreateDTO.getStock());
 
         Book savedBook = bookRepository.save(book);
-
         return mapper.toDTO(savedBook);
     }
 
