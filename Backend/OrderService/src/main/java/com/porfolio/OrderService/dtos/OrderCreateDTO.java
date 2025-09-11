@@ -19,4 +19,5 @@ public class OrderCreateDTO {
     private String shippingAddress;
 
     private String billingAddress;
+
 }

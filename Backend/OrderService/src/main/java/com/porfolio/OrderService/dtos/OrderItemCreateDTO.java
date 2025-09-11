@@ -21,4 +21,6 @@ public class OrderItemCreateDTO {
 
     @NotNull(message = "Unit price is required")
     private BigDecimal unitPrice;
+
+    private Integer stock;
 }
