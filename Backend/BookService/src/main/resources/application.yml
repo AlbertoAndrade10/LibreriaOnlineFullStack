@@ -44,3 +44,7 @@ cloudinary:
   api-key: ${CLOUDINARY_API_KEY:331892227717248}
   api-secret: ${CLOUDINARY_API_SECRET:VlE5hF0Zs6Q3rByHSMV7K7bjQ8M}
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
