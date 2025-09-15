@@ -34,4 +34,8 @@ public class BookCreateDTO {
     @NotNull(message = "The stock is mandatory")
     @PositiveOrZero(message = "The stock cannot be negative")
     private Integer stock;
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
 }
