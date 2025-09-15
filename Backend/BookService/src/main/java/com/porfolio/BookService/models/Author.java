@@ -26,4 +26,20 @@ public class Author {
 
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Book> books = new ArrayList<>();
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public List<Book> getBooks() {
+        return this.books;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAuthorName() {
+        return this.authorName;
+    }
 }
