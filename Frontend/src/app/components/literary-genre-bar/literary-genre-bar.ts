@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import 'animate.css';
 @Component({
   selector: 'app-literary-genre-bar',
   imports: [],
@@ -7,17 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './literary-genre-bar.css'
 })
 export class LiteraryGenreBar {
-  //Simulacion de géneros literarios
   genres = [
-    { name: 'Ficción' },
-    { name: 'No Ficción' },
-    { name: 'Misterio' },
-    { name: 'Ciencia Ficción' },
-    { name: 'Romance' },
-    { name: 'Fantasia' },
-    { name: 'Historia' },
-    { name: 'Biografía' },
-    { name: 'Autoayuda' },
-    { name: 'Poesía' }
+    { id: 1, name: 'Todos' },
+    { id: 2, name: 'Ficción' },
+    { id: 3, name: 'No Ficción' },
+    { id: 4, name: 'Ciencia Ficción' },
+    { id: 5, name: 'Fantasía' },
+    { id: 6, name: 'Misterio' },
+    { id: 7, name: 'Romance' },
+    { id: 8, name: 'Terror' },
+    { id: 9, name: 'Biografía' },
+    { id: 10, name: 'Histórico' },
+    { id: 11, name: 'Poesía' }
   ];
+
+  selectedGenre: number | null = null;
+
+  selectGenre(id: number): void {
+    this.selectedGenre = id;
+  }
 }

@@ -1,9 +1,21 @@
-<div class="text-center mb-2 sticky top-14 z-50 transition-all duration-300 bg-white">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nuestros Libros</h2>
-    <app-search-bar></app-search-bar>
-</div>
+<div class="min-h-screen bg-gray-50">
+    <div class="mb-2 transition-all duration-300  w-[60%] mx-auto flex flex-col items-center justify-center py-4">
+        <app-title-text title="Nuestros Libros"></app-title-text>
+        <app-search-bar></app-search-bar>
 
-<div class="flex stitcky top-20">
-    <app-literary-genre-bar></app-literary-genre-bar>
-    <app-book-grid></app-book-grid>
+    </div>
+
+    <div class="flex flex-col md:flex-row">
+
+        <div class="md:w-64 flex-shrink-0">
+            <app-literary-genre-bar></app-literary-genre-bar>
+        </div>
+
+        <main class="flex-1 p-4">
+            <div class="container mx-auto">
+
+                <app-book-grid></app-book-grid>
+            </div>
+        </main>
+    </div>
 </div>

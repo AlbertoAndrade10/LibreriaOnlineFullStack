@@ -54,10 +54,10 @@ export class BaseApi {
   protected handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
-      // error del lado del cliente
+      // client error
       errorMessage = `Error: ${error.error.message}`;
     } else {
-      //error del lado del servidor
+      // server error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     console.error(errorMessage);
