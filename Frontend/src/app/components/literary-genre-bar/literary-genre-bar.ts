@@ -1,27 +1,42 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { LiteraryGenre } from '../../models/LiteraryGenre.model';
 import 'animate.css';
+import { LiteraryGenreService } from '../../services/LiteraryGenreService/literary-genre-service';
 @Component({
   selector: 'app-literary-genre-bar',
   imports: [],
   templateUrl: './literary-genre-bar.html',
   styleUrl: './literary-genre-bar.css'
 })
-export class LiteraryGenreBar {
-  genres = [
-    { id: 1, name: 'Todos' },
-    { id: 2, name: 'Ficción' },
-    { id: 3, name: 'No Ficción' },
-    { id: 4, name: 'Ciencia Ficción' },
-    { id: 5, name: 'Fantasía' },
-    { id: 6, name: 'Misterio' },
-    { id: 7, name: 'Romance' },
-    { id: 8, name: 'Terror' },
-    { id: 9, name: 'Biografía' },
-    { id: 10, name: 'Histórico' },
-    { id: 11, name: 'Poesía' }
-  ];
+export class LiteraryGenreBar implements OnInit {
 
+  genres: LiteraryGenre[] = [];
   selectedGenre: number | null = null;
+  loading = false;
+  error: string | null = null;
+
+  constructor(private genreService: LiteraryGenreService) { }
+
+  ngOnInit(): void {
+    this.loadGenres();
+  }
+
+  loadGenres(): void {
+    this.loading = true;
+    this.error = null;
+
+    this.genreService.getAllGenres().subscribe({
+      next: (genres) => {
+        this.genres = genres;
+        this.loading = false;
+      },
+      error: (err) => {
+        console.error('Error loading genres:', err);
+        this.error = 'Error al cargar los géneros';
+        this.loading = false;
+      }
+    });
+  }
 
   selectGenre(id: number): void {
     this.selectedGenre = id;
