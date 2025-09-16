@@ -1,0 +1,14 @@
+<header class="flex shadow-lg py-4 px-4 sm:px-10 bg-white min-h-[70px] tracking-wide relative z-50">
+    <div class="flex flex-wrap items-center justify-between gap-4 w-full">
+        <app-logo-component></app-logo-component>
+
+        @if (isMenuOpen) {
+        <app-nav-menu-component (close)="closeMenu()"></app-nav-menu-component>
+        }
+
+        <div class="flex items-center ml-auto space-x-6">
+            <app-auth-buttons-component></app-auth-buttons-component>
+            <app-hamburger-button-component (toggle)="toggleMenu()"></app-hamburger-button-component>
+        </div>
+    </div>
+</header>
