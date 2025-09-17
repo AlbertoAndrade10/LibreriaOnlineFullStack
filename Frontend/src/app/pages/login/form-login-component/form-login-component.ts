@@ -20,6 +20,9 @@ export class FormLoginComponent {
   }
 
   onSubmit() {
+
+    //-->> Aqui irá la logica de autenticación<<-- //
+
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.loginEvent.emit({ email: email!, password: password! });

@@ -1,0 +1,105 @@
+<div class="min-h-screen flex items-center justify-center  py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <div>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                Crea tu cuenta
+            </h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                Ya tienes una cuenta?
+                <a routerLink="/login" class="font-medium text-indigo-600 hover:text-indigo-500">
+                    Inicia sesión aquí
+                </a>
+            </p>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+            <div class="rounded-md shadow-sm -space-y-[-10px]">
+                <!-- Nombre -->
+                <div>
+                    <label for="name" class="sr-only">Nombre completo</label>
+                    <input id="name" type="text" formControlName="name"
+                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        placeholder="Nombre completo" />
+                    @if (registerForm.get('name')?.invalid && registerForm.get('name')?.touched) {
+                    <p class="mt-1 text-sm text-red-600">
+                        @if (registerForm.get('name')?.errors?.['required']) {
+                        El nombre es requerido
+                        } @else if (registerForm.get('name')?.errors?.['minlength']) {
+                        El nombre debe tener al menos 2 caracteres
+                        }
+                    </p>
+                    }
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="sr-only">Correo electrónico</label>
+                    <input id="email" type="email" formControlName="email"
+                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        placeholder="Correo electrónico" />
+                    @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+                    <p class="mt-1 text-sm text-red-600">
+                        @if (registerForm.get('email')?.errors?.['required']) {
+                        El correo es requerido
+                        } @else if (registerForm.get('email')?.errors?.['email']) {
+                        Ingresa un correo válido
+                        }
+                    </p>
+                    }
+                </div>
+
+                <!-- Contraseña -->
+                <div>
+                    <label for="password" class="sr-only">Contraseña</label>
+                    <input id="password" type="password" formControlName="password"
+                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        placeholder="Contraseña" />
+                    @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+                    <p class="mt-1 text-sm text-red-600">
+                        @if (registerForm.get('password')?.errors?.['required']) {
+                        La contraseña es requerida
+                        } @else if (registerForm.get('password')?.errors?.['minlength']) {
+                        La contraseña debe tener al menos 6 caracteres
+                        }
+                    </p>
+                    }
+                </div>
+
+                <!-- Confirmar Contraseña -->
+                <div>
+                    <label for="confirmPassword" class="sr-only">Confirmar Contraseña</label>
+                    <input id="confirmPassword" type="password" formControlName="confirmPassword"
+                        class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                        placeholder="Confirmar Contraseña" />
+                    @if (registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched) {
+                    <p class="mt-1 text-sm text-red-600">
+                        @if (registerForm.get('confirmPassword')?.errors?.['required']) {
+                        Confirma tu contraseña
+                        } @else if (registerForm.get('confirmPassword')?.errors?.['mismatch']) {
+                        Las contraseñas no coinciden
+                        }
+                    </p>
+                    }
+                </div>
+            </div>
+
+
+
+            <div>
+                <button type="submit" [disabled]="registerForm.invalid"
+                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50">
+                    <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                        <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                            aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </span>
+                    Crear Cuenta
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

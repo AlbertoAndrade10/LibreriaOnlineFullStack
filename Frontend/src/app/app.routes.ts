@@ -3,6 +3,7 @@ import { BaseLayout } from './components/layouts/base-layout/base-layout';
 import { IndexPage } from './pages/index/index-page/index-page';
 import { BookPage } from './pages/book/book-page/book-page';
 import { LoginPage } from './pages/login/login-page/login-page';
+import { RegisterPage } from './pages/register/register-page/register-page';
 
 
 
@@ -22,6 +23,10 @@ export const routes: Routes = [
             {
                 path: 'login',
                 component: LoginPage
+            },
+            {
+                path: 'register',
+                component: RegisterPage
             },
 
 
