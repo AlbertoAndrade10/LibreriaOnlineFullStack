@@ -1,0 +1,58 @@
+<div class="mt-8 px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-2xl mx-auto mb-8 sm:mb-10">
+        <app-search-input placeholder="Buscar por nombre, autor..."></app-search-input>
+    </div>
+
+
+    <div class="text-center mb-8">
+        <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
+    </div>
+
+
+    <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
+
+        <div class="lg:col-span-1">
+            <app-literary-genres-content-grid></app-literary-genres-content-grid>
+        </div>
+
+
+        <div class="lg:col-span-4">
+            <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div>
+                    <app-book-card-component></app-book-card-component>
+                </div>
+                <div>
+                    <app-book-card-component></app-book-card-component>
+                </div>
+                <div>
+                    <app-book-card-component></app-book-card-component>
+                </div>
+                <div>
+                    <app-book-card-component></app-book-card-component>
+                </div>
+                <div>
+                    <app-book-card-component></app-book-card-component>
+                </div>
+                <div>
+                    <app-book-card-component></app-book-card-component>
+                </div>
+                <div>
+                    <app-book-card-component></app-book-card-component>
+                </div>
+                <div>
+                    <app-book-card-component></app-book-card-component>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class=" flex items-center justify-center mt-8 ">
+        <app-paginator></app-paginator>
+    </div>
+
+    <div class="text-center mt-10 sm:mt-12">
+        <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
+    </div>
+</div>
