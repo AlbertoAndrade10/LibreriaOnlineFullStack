@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { BaseLayout } from './components/layouts/base-layout/base-layout';
-import { IndexPage } from './pages/index-page/index-page';
+import { IndexPage } from './pages/index/index-page/index-page';
 
 
 export const routes: Routes = [

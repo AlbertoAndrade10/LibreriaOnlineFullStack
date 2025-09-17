@@ -1,0 +1,21 @@
+<section class="relative w-full h-[500px] overflow-hidden rounded-2xl">
+    <!-- Imagen de fondo -->
+    <div class="absolute inset-0 z-0">
+        <app-image-hero-component imageUrl="./images/LibreriaOnline.webp"></app-image-hero-component>
+        <!-- Overlay oscuro para mejor contraste del texto -->
+        <div class="absolute inset-0 bg-opacity-50"></div>
+    </div>
+
+    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+        <div class="max-w-3xl">
+            <app-text-hero-component
+                text="Sumergete y descubre nuevos mundos con nuestro amplio contenido en libros...">
+            </app-text-hero-component>
+
+            <div class="mt-8">
+                <app-button-hero-component buttonText="Conoce nuestros libros" buttonLink="futura-ruta">
+                </app-button-hero-component>
+            </div>
+        </div>
+    </div>
+</section>

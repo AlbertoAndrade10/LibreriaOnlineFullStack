@@ -2,6 +2,29 @@
     <div class="flex flex-wrap items-center justify-between gap-4 w-full">
         <app-logo-component></app-logo-component>
 
+        <!-- desktop menu -->
+        <div class="hidden lg:flex lg:items-center lg:w-auto">
+            <ul class="lg:flex lg:gap-x-5">
+                <li>
+                    <a href="javascript:void(0)"
+                        class="hover:text-blue-700 text-blue-700 block font-medium text-[15px]">Inicio</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"
+                        class="hover:text-blue-700 text-slate-900 block font-medium text-[15px]">Nuestros libros</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"
+                        class="hover:text-blue-700 text-slate-900 block font-medium text-[15px]">Contacto</a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)"
+                        class="hover:text-blue-700 text-slate-900 block font-medium text-[15px]">Administración</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- mobile menuu -->
         @if (isMenuOpen) {
         <app-nav-menu-component (close)="closeMenu()"></app-nav-menu-component>
         }
