@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-nav-menu-component',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './nav-menu-component.html',
   styleUrl: './nav-menu-component.css'
 })
