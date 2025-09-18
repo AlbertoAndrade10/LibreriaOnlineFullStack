@@ -5,6 +5,10 @@ import { BookPage } from './pages/book/book-page/book-page';
 import { LoginPage } from './pages/login/login-page/login-page';
 import { RegisterPage } from './pages/register/register-page/register-page';
 import { DashBoardPage } from './pages/dashboard/dash-board-page/dash-board-page';
+import { AdministrationBookPage } from './pages/dashboard/administration-book-page/administration-book-page';
+import { AdministrationUserPage } from './pages/dashboard/administration-user-page/administration-user-page';
+import { AdministrationStockPage } from './pages/dashboard/administration-stock-page/administration-stock-page';
+import { AdministrationOrderPage } from './pages/dashboard/administration-order-page/administration-order-page';
 
 
 
@@ -31,8 +35,31 @@ export const routes: Routes = [
             },
             {
                 path: 'dashboard',
-                component: DashBoardPage
+                component: DashBoardPage,
+                children: [
+                    {
+                        path: 'administration-books',
+                        component: AdministrationBookPage,
+
+                    },
+                    {
+                        path: 'administration-users',
+                        component: AdministrationUserPage,
+
+                    },
+                    {
+                        path: 'administration-stock',
+                        component: AdministrationStockPage,
+
+                    },
+                    {
+                        path: 'administration-orders',
+                        component: AdministrationOrderPage,
+
+                    },
+                ]
             },
+
 
 
         ]
