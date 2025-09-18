@@ -4,6 +4,7 @@ import { IndexPage } from './pages/index/index-page/index-page';
 import { BookPage } from './pages/book/book-page/book-page';
 import { LoginPage } from './pages/login/login-page/login-page';
 import { RegisterPage } from './pages/register/register-page/register-page';
+import { DashBoardPage } from './pages/dashboard/dash-board-page/dash-board-page';
 
 
 
@@ -27,6 +28,10 @@ export const routes: Routes = [
             {
                 path: 'register',
                 component: RegisterPage
+            },
+            {
+                path: 'dashboard',
+                component: DashBoardPage
             },
 
 
