@@ -1,0 +1,13 @@
+<div class="grid grid-cols-5 grid-rows-5 gap-4">
+    <div class="col-span-3 col-start-2">
+        <ng-content select="[title-component]"></ng-content>
+    </div>
+
+    <div class="col-span-2 col-start-4 row-start-2">
+        <ng-content select="[action-component]"></ng-content>
+    </div>
+
+    <div class="col-span-5 row-span-3 row-start-3">
+        <ng-content select="[table-component]"></ng-content>
+    </div>
+</div>
