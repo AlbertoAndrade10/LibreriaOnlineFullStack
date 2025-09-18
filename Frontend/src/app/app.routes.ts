@@ -9,6 +9,8 @@ import { AdministrationBookPage } from './pages/dashboard/administration-book-pa
 import { AdministrationUserPage } from './pages/dashboard/administration-user-page/administration-user-page';
 import { AdministrationStockPage } from './pages/dashboard/administration-stock-page/administration-stock-page';
 import { AdministrationOrderPage } from './pages/dashboard/administration-order-page/administration-order-page';
+import { DashboardLayout } from './components/layouts/dashboard-layout/dashboard-layout';
+
 
 
 
@@ -35,7 +37,7 @@ export const routes: Routes = [
             },
             {
                 path: 'dashboard',
-                component: DashBoardPage,
+                component: DashboardLayout,
                 children: [
                     {
                         path: 'administration-books',
@@ -64,4 +66,6 @@ export const routes: Routes = [
 
         ]
     }
+
+
 ];

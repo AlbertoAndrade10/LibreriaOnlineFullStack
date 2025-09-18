@@ -4,10 +4,11 @@ import { TitleComponent } from "../GlobalTemplate/title-component/title-componen
 import { ActionComponent } from "../GlobalTemplate/action-component/action-component";
 import { TableComponent } from "../GlobalTemplate/table-component/table-component";
 import { ShearchComponentDashboard } from "../GlobalTemplate/shearch-component-dashboard/shearch-component-dashboard";
+import { CategoryDashBoardGrid } from "../category-dash-board-grid/category-dash-board-grid";
 
 @Component({
   selector: 'app-administration-book-page',
-  imports: [GlobalTemplateContent, TitleComponent, ActionComponent, TableComponent, ShearchComponentDashboard],
+  imports: [GlobalTemplateContent, TitleComponent, ActionComponent, TableComponent, ShearchComponentDashboard, CategoryDashBoardGrid],
   templateUrl: './administration-book-page.html',
   styleUrl: './administration-book-page.css'
 })
