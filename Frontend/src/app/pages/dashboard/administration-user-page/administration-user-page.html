@@ -1,1 +1,19 @@
-<p>administration-user-page works!</p>
+<app-global-template-content>
+    <div title-component>
+        <app-title-component title="Administración de Usuario"
+            subtitle="Aquí puedes administrar los usuarios de la librería.">
+        </app-title-component>
+    </div>
+
+    <div action-component>
+        <app-action-component buttonText="Agregar Usuario">
+            ></app-action-component>
+    </div>
+
+    <div table-component>
+        <app-table-component [headers]="tableHeaders" [data]="tableData">></app-table-component>
+
+    </div>
+
+
+</app-global-template-content>

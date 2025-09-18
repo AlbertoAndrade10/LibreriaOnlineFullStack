@@ -11,10 +11,13 @@ import { TableComponent } from "../GlobalTemplate/table-component/table-componen
   styleUrl: './administration-book-page.css'
 })
 export class AdministrationBookPage {
-  tableHeaders = ['Nombre', 'Email', 'Rol', 'Estado'];
+  tableHeaders = ['Id', 'Nombre', 'Author', 'Precio', 'Estado'];
   tableData = [
-    ['Juan Pérez', 'juan@example.com', 'Admin', 'Activo'],
-    ['María García', 'maria@example.com', 'Usuario', 'Activo'],
-    ['Carlos López', 'carlos@example.com', 'Usuario', 'Inactivo']
+    ['1', 'Nombre libro ', 'Nombre autor', '1.1', 'Activo'],
+    ['1', 'Nombre libro ', 'Nombre autor', '1.1', 'Activo'],
+    ['1', 'Nombre libro ', 'Nombre autor', '1.1', 'Activo'],
+    ['1', 'Nombre libro ', 'Nombre autor', '1.1', 'Activo'],
+    ['1', 'Nombre libro ', 'Nombre autor', '1.1', 'Activo'],
+
   ];
 }
