@@ -3,10 +3,11 @@ import { GlobalTemplateContent } from "../GlobalTemplate/global-template-content
 import { TitleComponent } from "../GlobalTemplate/title-component/title-component";
 import { TableComponent } from "../GlobalTemplate/table-component/table-component";
 import { ActionComponent } from "../GlobalTemplate/action-component/action-component";
+import { ShearchComponentDashboard } from "../GlobalTemplate/shearch-component-dashboard/shearch-component-dashboard";
 
 @Component({
   selector: 'app-administration-order-page',
-  imports: [GlobalTemplateContent, TitleComponent, TableComponent, ActionComponent],
+  imports: [GlobalTemplateContent, TitleComponent, TableComponent, ActionComponent, ShearchComponentDashboard],
   templateUrl: './administration-order-page.html',
   styleUrl: './administration-order-page.css'
 })
