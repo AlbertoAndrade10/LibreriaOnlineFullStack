@@ -2,17 +2,22 @@ package com.porfolio.AuthService.utils;
 
 import java.util.Date;
 
+import com.porfolio.AuthService.config.JwtProperties;
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 public class JwtUtils {
 
-    //Cambiarlo de aqui para que no este hardcodeado
-    private static final String SECRET_KEY = "WJKEHRFIOU2W4HJGUIO2UIOTHG2890RTU90UG90KWHJFG902UJPF2NKJWNFIHJQWNFGUIO3478957823YNVKMSKOLTM2893450IOW3JK924IUTG90I2U09GU029TU9012";
+    private final String SECRET_KEY;
+
+    public JwtUtils(JwtProperties jwtProperties) {
+        this.SECRET_KEY = jwtProperties.getSecretKey();
+    }
 
     @SuppressWarnings("deprecation")
-    public static String generateToken(String username, long expiration) {
+    public String generateToken(String username, long expiration) {
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
@@ -22,7 +27,7 @@ public class JwtUtils {
     }
 
     @SuppressWarnings("deprecation")
-    public static Claims parseToken(String token) {
+    public Claims parseToken(String token) {
         return Jwts.parser()
                 .setSigningKey(SECRET_KEY)
                 .parseClaimsJws(token)
