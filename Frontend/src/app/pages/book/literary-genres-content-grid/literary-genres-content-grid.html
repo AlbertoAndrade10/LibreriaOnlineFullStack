@@ -2,29 +2,11 @@
     <h3 class="text-lg font-semibold text-gray-800  mb-4 text-center">Géneros Literarios</h3>
 
     <div class="space-y-3">
+        @for (genre of literaryGenres; track genre.id) {
         <a href="#"
             class="block w-full py-2 px-3 text-gray-600  hover:text-blue-600  font-medium text-base transition-colors duration-200 ease-in-out hover:bg-gray-50  rounded">
-            Historia
+            {{ genre.literaryGenreName }}
         </a>
-
-        <a href="#"
-            class="block w-full py-2 px-3 text-gray-600  hover:text-blue-600  font-medium text-base transition-colors duration-200 ease-in-out hover:bg-gray-50  rounded">
-            Poesía
-        </a>
-
-        <a href="#"
-            class="block w-full py-2 px-3 text-gray-600    font-medium text-base transition-colors duration-200 ease-in-out hover:bg-gray-50  rounded">
-            Ciencia Ficción
-        </a>
-
-        <a href="#"
-            class="block w-full py-2 px-3 text-gray-600  hover:text-blue-600  font-medium text-base transition-colors duration-200 ease-in-out hover:bg-gray-50  rounded">
-            Comedia
-        </a>
-
-        <a href="#"
-            class="block w-full py-2 px-3 text-gray-600  hover:text-blue-600  font-medium text-base transition-colors duration-200 ease-in-out hover:bg-gray-50  rounded">
-            Psicología
-        </a>
+        }
     </div>
 </div>

@@ -3,8 +3,10 @@ export const environment = {
     apiUrl: 'http://localhost:8083/api/v1'
 }
 
+
 export const API_ENDPOINTS = {
     BOOKS: `${environment.apiUrl}/books`,
     AUTHORS: `${environment.apiUrl}/authors`,
     LITERARYGENRES: `${environment.apiUrl}/literary-genres`,
 }
+
