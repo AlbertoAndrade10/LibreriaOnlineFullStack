@@ -1,6 +1,7 @@
-app:
+security:
   jwt:
     secret-key: "WJKEHRFIOU2W4HJGUIO2UIOTHG2890RTU90UG90KWHJFG902UJPF2NKJWNFIHQWNFGUIO3478957823YNVKMSKOLTM2893450IOW3JK924IUTG90I2U09GU029TU9012"
+    expiration-time: 86400000
 server:
   port: 8082
 
@@ -8,7 +9,7 @@ spring:
   application:
     name: AuthService
   datasource:
-    url: jdbc:mysql://localhost:3307/books?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://localhost:3307/users?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
     password: LibreriaOnlinePassword
     driver-class-name: com.mysql.cj.jdbc.Driver
