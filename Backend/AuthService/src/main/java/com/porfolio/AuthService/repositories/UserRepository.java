@@ -2,11 +2,12 @@ package com.porfolio.AuthService.repositories;
 
 import java.util.Optional;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.porfolio.AuthService.entities.User;
 
-public interface UserRepository {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByEmail(String email);
 
-    Iterable<User> findAll();
 }
