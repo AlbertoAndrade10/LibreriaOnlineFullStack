@@ -7,4 +7,6 @@ import com.porfolio.AuthService.entities.User;
 public interface UserRepository {
 
     Optional<User> findByEmail(String email);
+
+    Iterable<User> findAll();
 }
