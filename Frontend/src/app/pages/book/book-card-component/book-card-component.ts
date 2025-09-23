@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ImageBookCardComponent } from "../image-book-card-component/image-book-card-component";
 import { DataBookComponent } from "../data-book-component/data-book-component";
 import { ButtonPayProduct } from "../button-pay-product/button-pay-product";
 import { ButtonAddCart } from "../button-add-cart/button-add-cart";
+import { Book } from '../../../models/book.model';
+
 @Component({
   selector: 'app-book-card-component',
   imports: [ImageBookCardComponent, DataBookComponent, ButtonPayProduct, ButtonAddCart],
@@ -10,5 +12,7 @@ import { ButtonAddCart } from "../button-add-cart/button-add-cart";
   styleUrl: './book-card-component.css'
 })
 export class BookCardComponent {
+
+  @Input() books: Book[] = [];
 
 }
