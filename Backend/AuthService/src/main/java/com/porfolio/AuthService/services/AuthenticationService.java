@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.porfolio.AuthService.dtos.LoginUserDTO;
 import com.porfolio.AuthService.dtos.RegisterUserDTO;
+import com.porfolio.AuthService.entities.Role;
 import com.porfolio.AuthService.entities.User;
 import com.porfolio.AuthService.repositories.UserRepository;
 
@@ -34,7 +35,8 @@ public class AuthenticationService {
         var user = new User()
                 .setFullName(input.getFullName())
                 .setEmail(input.getEmail())
-                .setPassword(passwordEncoder.encode(input.getPassword()));
+                .setPassword(passwordEncoder.encode(input.getPassword()))
+                .setRole(Role.USER);
 
         return userRepository.save(user);
     }
