@@ -10,7 +10,6 @@ import { RouterLink } from '@angular/router';
 })
 export class FormRegisterComponent {
 
-
   registerForm: ReturnType<FormBuilder['group']>;
 
   registerEvent = output<{ name: string; email: string; password: string }>();
@@ -44,6 +43,11 @@ export class FormRegisterComponent {
       this.registerEvent.emit({ name: name!, email: email!, password: password! });
     } else {
       console.log('Formulario inválido');
+      // Marcar todos los campos como tocados para mostrar errores
+      Object.keys(this.registerForm.controls).forEach(key => {
+        const control = this.registerForm.get(key);
+        control?.markAsTouched();
+      });
     }
   }
 }
