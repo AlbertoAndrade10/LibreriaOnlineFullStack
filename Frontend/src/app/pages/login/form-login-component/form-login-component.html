@@ -4,6 +4,12 @@
             <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
                 Inicia sesión
             </h2>
+            <p class="mt-2 text-center text-sm text-gray-600">
+                ¿No tienes una cuenta?
+                <a href="/register" class="font-medium text-indigo-600 hover:text-indigo-500">
+                    Regístrate aquí
+                </a>
+            </p>
         </div>
 
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
@@ -14,7 +20,13 @@
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Correo electrónico" />
                     @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
-                    <p class="mt-1 text-sm text-red-600">Por favor ingresa un correo válido</p>
+                    <p class="mt-1 text-sm text-red-600">
+                        @if (loginForm.get('email')?.errors?.['required']) {
+                        El correo es requerido
+                        } @else if (loginForm.get('email')?.errors?.['email']) {
+                        Por favor ingresa un correo válido
+                        }
+                    </p>
                     }
                 </div>
 
@@ -24,7 +36,13 @@
                         class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                         placeholder="Contraseña" />
                     @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
-                    <p class="mt-1 text-sm text-red-600">La contraseña debe tener al menos 6 caracteres</p>
+                    <p class="mt-1 text-sm text-red-600">
+                        @if (loginForm.get('password')?.errors?.['required']) {
+                        La contraseña es requerida
+                        } @else if (loginForm.get('password')?.errors?.['minlength']) {
+                        La contraseña debe tener al menos 6 caracteres
+                        }
+                    </p>
                     }
                 </div>
             </div>

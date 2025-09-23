@@ -20,14 +20,16 @@ export class FormLoginComponent {
   }
 
   onSubmit() {
-
-    //-->> Aqui irá la logica de autenticación<<-- //
-
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.loginEvent.emit({ email: email!, password: password! });
     } else {
       console.log('Formulario inválido');
+
+      Object.keys(this.loginForm.controls).forEach(key => {
+        const control = this.loginForm.get(key);
+        control?.markAsTouched();
+      });
     }
   }
 }
