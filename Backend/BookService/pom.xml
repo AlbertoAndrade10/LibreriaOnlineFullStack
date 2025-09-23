@@ -65,12 +65,18 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- Lombok con versión personalizada -->
+		<!-- Lombok  -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>1.18.38</version>
 			<scope>provided</scope>
+		</dependency>
+
+		<!-- Actuator (gateway) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 
 		<!-- Cloudinary SDK -->

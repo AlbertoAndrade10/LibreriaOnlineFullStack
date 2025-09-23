@@ -37,4 +37,8 @@ public class UserController {
         return ResponseEntity.ok(users);
     }
 
+    @GetMapping("/health-UserController")
+    public String health() {
+        return "Health check UserController";
+    }
 }

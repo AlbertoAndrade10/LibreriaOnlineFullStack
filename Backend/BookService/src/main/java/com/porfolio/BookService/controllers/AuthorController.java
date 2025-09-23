@@ -64,4 +64,9 @@ public class AuthorController {
         authorService.deleteAuthor(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/health-AuthorController")
+    public String health() {
+        return "Health check AuthorController";
+    }
 }

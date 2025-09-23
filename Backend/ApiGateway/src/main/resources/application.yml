@@ -4,6 +4,35 @@ server:
 spring:
   application:
     name: ApiGateway
+  cloud:
+    gateway:
+      routes:
+      # -->> AuthService routes <<--
+      - id: AuthService
+        uri: lb://AUTHSERVICE
+        predicates:
+          - Path=/api/auth/**
+
+      - id: AuthService
+        uri: lb://AUTHSERVICE
+        predicates:
+          - Path=/api/users/**
+      
+      # -->> BookService routes <<--
+      - id: BookService
+        uri: lb://BOOKSERVICE
+        predicates:
+          - Path=/api/v1/books/**
+
+      - id: BookService
+        uri: lb://BOOKSERVICE
+        predicates:
+          - Path=/api/v1/authors/**
+
+      - id: BookService
+        uri: lb://BOOKSERVICE
+        predicates:
+          - Path=/api/v1/literary-genres/**
 
 eureka:
   client:

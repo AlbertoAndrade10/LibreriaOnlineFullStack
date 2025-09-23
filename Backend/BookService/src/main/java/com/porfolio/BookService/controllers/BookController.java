@@ -115,4 +115,9 @@ public class BookController {
         List<BookDTO> books = bookService.getBooksByGenre(genreId);
         return ResponseEntity.ok(books);
     }
+
+    @GetMapping("/health-BookController")
+    public String health() {
+        return "Health check BookController";
+    }
 }

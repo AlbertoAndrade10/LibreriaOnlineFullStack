@@ -64,4 +64,9 @@ public class LiteraryGenreController {
         literaryGenreService.deleteGenre(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/health-LiteraryGenreController")
+    public String health() {
+        return "Health check LiteraryGenreController";
+    }
 }
