@@ -31,6 +31,7 @@ public class UserController {
         return ResponseEntity.ok(currentUser);
     }
 
+    @GetMapping
     public ResponseEntity<List<User>> allUsers() {
         List<User> users = userService.allUsers();
 
@@ -40,5 +41,14 @@ public class UserController {
     @GetMapping("/health-UserController")
     public String health() {
         return "Health check UserController";
+    }
+
+    @GetMapping("/profile")
+    public ResponseEntity<String> getUserProfile() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+
+        return ResponseEntity.ok("Hello " + currentUser.getFullName()
+                + ", your role is: " + currentUser.getRole());
     }
 }
