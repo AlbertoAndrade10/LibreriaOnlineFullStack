@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,6 +35,10 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Role role = Role.USER;
 
     @CreationTimestamp
     @Column(updatable = false, name = "created_at")
@@ -127,6 +133,15 @@ public class User implements UserDetails {
         return this;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public User setRole(Role role) {
+        this.role = role;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "User{"
@@ -134,6 +149,7 @@ public class User implements UserDetails {
                 + ", fullName='" + fullName + '\''
                 + ", email='" + email + '\''
                 + ", password='" + password + '\''
+                + ", role='" + role + '\''
                 + ", createdAt=" + createdAt
                 + ", updatedAt=" + updatedAt
                 + '}';
