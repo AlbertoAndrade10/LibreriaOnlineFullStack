@@ -1,10 +1,13 @@
 package com.porfolio.AuthService.dtos;
 
+import com.porfolio.AuthService.entities.Role;
+
 public class RegisterUserDTO {
 
     private String email;
     private String password;
     private String fullName;
+    private Role role = Role.USER;
 
     public String getEmail() {
         return email;
@@ -33,11 +36,21 @@ public class RegisterUserDTO {
         return this;
     }
 
+    public Role getRole() {
+        return role;
+    }
+
+    public RegisterUserDTO setRole(Role role) {
+        this.role = Role.USER;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "RegisterUserDTO{"
                 + "email='" + email + '\''
                 + ", password='" + password + '\''
+                + ", role='" + role + '\''
                 + ", fullName='" + fullName + '\''
                 + '}';
     }
