@@ -14,7 +14,7 @@ import com.porfolio.AuthService.responses.LoginResponse;
 import com.porfolio.AuthService.services.AuthenticationService;
 import com.porfolio.AuthService.services.JwtService;
 
-@RequestMapping("api/auth")
+@RequestMapping("/auth")
 @RestController
 public class AuthenticationController {
 

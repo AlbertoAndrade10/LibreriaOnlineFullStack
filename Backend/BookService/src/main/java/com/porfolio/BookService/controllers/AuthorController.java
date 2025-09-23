@@ -19,7 +19,7 @@ import com.porfolio.BookService.dtos.AuthorDTO;
 import com.porfolio.BookService.services.AuthorService.IAuthorService;
 
 @RestController
-@RequestMapping("/api/v1/authors")
+@RequestMapping("/authors")
 @CrossOrigin(origins = "http://localhost:4200")
 public class AuthorController {
 

@@ -25,7 +25,7 @@ import com.porfolio.BookService.services.BookService.IBookService;
 import com.porfolio.BookService.services.CloudinaryService.ICloudinaryService;
 
 @RestController
-@RequestMapping("/api/v1/books")
+@RequestMapping("/books")
 @CrossOrigin(origins = "http://localhost:4200")
 public class BookController {
 

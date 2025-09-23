@@ -19,7 +19,7 @@ import com.porfolio.BookService.dtos.LiteraryGenreDTO;
 import com.porfolio.BookService.services.LiteraryGenreService.ILiteraryGenreService;
 
 @RestController
-@RequestMapping("/api/v1/literary-genres")
+@RequestMapping("/literary-genres")
 @CrossOrigin(origins = "http://localhost:4200")
 public class LiteraryGenreController {
 

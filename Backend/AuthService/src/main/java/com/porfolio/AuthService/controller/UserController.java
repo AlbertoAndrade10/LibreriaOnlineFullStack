@@ -13,7 +13,7 @@ import com.porfolio.AuthService.entities.User;
 import com.porfolio.AuthService.services.UserService;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/users")
 public class UserController {
 
     private final UserService userService;

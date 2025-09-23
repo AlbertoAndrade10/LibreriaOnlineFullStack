@@ -11,23 +11,23 @@ spring:
       - id: AuthService
         uri: lb://AUTHSERVICE
         predicates:
-          - Path=/api/auth/**
+          - Path=/auth/**
 
       - id: AuthService
         uri: lb://AUTHSERVICE
         predicates:
-          - Path=/api/users/**
+          - Path=/users/**
       
       # -->> BookService routes <<--
       - id: BookService
         uri: lb://BOOKSERVICE
         predicates:
-          - Path=/api/v1/books/**
+          - Path=/books/**
 
       - id: BookService
         uri: lb://BOOKSERVICE
         predicates:
-          - Path=/api/v1/authors/**
+          - Path=/authors/**
 
       - id: BookService
         uri: lb://BOOKSERVICE
