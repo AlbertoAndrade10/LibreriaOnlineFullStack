@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { LiteraryGenreService } from '../../../services/LiteraryGenreService/literary-genre-service';
 import { LiteraryGenre } from '../../../models/LiteraryGenre.model';
 
@@ -10,31 +10,21 @@ import { LiteraryGenre } from '../../../models/LiteraryGenre.model';
 })
 export class LiteraryGenresContentGrid implements OnInit {
 
-  literaryGenres: LiteraryGenre[] = [];
+  @Input() literaryGenres: LiteraryGenre[] = [];
   loading: boolean = false;
   error: string | null = null;
+  hasReceivedData: boolean = false;
 
-  constructor(private readonly http: LiteraryGenreService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    console.log("Cargar generos literarios");
-    this.loadLiteraryGenres();
-  }
+    // Marcar si se recibieron datos por input
+    this.hasReceivedData = this.literaryGenres.length > 0;
 
-  loadLiteraryGenres() {
-    this.loading = true;
-    this.error = null;
-
-    this.http.getAllGenres().subscribe({
-      next: (genre) => {
-        this.literaryGenres = genre;
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error("Error al cargar los generos literarios:", err)
-        this.error = "No se pudieron cargar los generos literarios"
-        this.loading = false;
-      }
-    })
+    if (this.hasReceivedData) {
+      console.log("LiteraryGenresContentGrid: Datos recibidos por input, NO se hará petición");
+    } else {
+      console.log("LiteraryGenresContentGrid: No se recibieron datos por input, NO se hará petición (por diseño)");
+    }
   }
 }

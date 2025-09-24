@@ -22,8 +22,7 @@ public class SecurityConfiguration {
                 .permitAll()
                 .anyExchange()
                 .permitAll()
-                )
-                .cors(cors -> cors.disable());
+                );
 
         return http.build();
     }

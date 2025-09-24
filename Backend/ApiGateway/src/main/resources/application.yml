@@ -6,13 +6,6 @@ spring:
     name: ApiGateway
   cloud:
     gateway:
-      globalcors:
-        cors-configurations:
-          '[/**]':
-            allowedOriginPatterns: "*"
-            allowedMethods: "*"
-            allowedHeaders: "*"
-            allowCredentials: true
       routes:
         # -->> AuthService routes <<--
         - id: AuthService

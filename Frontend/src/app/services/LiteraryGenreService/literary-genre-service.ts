@@ -10,6 +10,11 @@ import { API_ENDPOINTS } from '../../environment/environment';
 export class LiteraryGenreService extends BaseApi {
 
   getAllGenres(): Observable<LiteraryGenre[]> {
+
+    console.log("LiteraryGenreService: getAllGenres() llamado");
+    const stack = new Error().stack;
+    console.log("Stack trace:", stack);
+
     return this.get<LiteraryGenre[]>(API_ENDPOINTS.LITERARYGENRES);
   }
   getGenreById(id: number): Observable<LiteraryGenre> {

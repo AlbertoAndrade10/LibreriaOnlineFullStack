@@ -1,4 +1,5 @@
-<header class="sticky top-0 flex shadow-lg py-4 px-4 sm:px-10 bg-white min-h-[70px] tracking-wide  z-50">
+<!-- header-component.html -->
+<header class="sticky top-0 flex shadow-lg py-4 px-4 sm:px-10 bg-white min-h-[70px] tracking-wide z-50">
     <div class="flex flex-wrap items-center justify-between gap-4 w-full">
         <app-logo-component></app-logo-component>
 
@@ -13,20 +14,50 @@
                         class="hover:text-blue-700 text-slate-900 block font-medium text-[15px]">Nuestros libros</a>
                 </li>
 
+                <!-- Mostrar Administración solo si es admin -->
+                @if (isAdmin) {
                 <li>
                     <a routerLink="/dashboard/administration-books"
                         class="hover:text-blue-700 text-slate-900 block font-medium text-[15px]">Administración</a>
                 </li>
+                }
             </ul>
         </div>
 
-        <!-- mobile menuu -->
+        <!-- mobile menu -->
         @if (isMenuOpen) {
         <app-nav-menu-component (close)="closeMenu()"></app-nav-menu-component>
         }
 
         <div class="flex items-center ml-auto space-x-6">
+            <!-- Mostrar información del usuario si está logeado -->
+            @if (isLoggedIn) {
+            <div class="relative" #dropdown>
+                <button class="flex items-center space-x-2 focus:outline-none">
+                    <div
+                        class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-medium">
+                        {{ getInitials() }}
+                    </div>
+                    <span class="hidden md:block text-sm font-medium text-gray-700">{{ userName }}</span>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+                    <a routerLink="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mi
+                        perfil</a>
+                    @if (isAdmin) {
+                    <a routerLink="/dashboard/administration-books"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Panel de administración</a>
+                    }
+                    <button (click)="logout()"
+                        class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar
+                        sesión</button>
+                </div>
+            </div>
+            } @else {
             <app-auth-buttons-component></app-auth-buttons-component>
+            }
+
             <app-hamburger-button-component (toggle)="toggleMenu()"></app-hamburger-button-component>
         </div>
     </div>

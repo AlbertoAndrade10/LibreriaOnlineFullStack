@@ -10,6 +10,9 @@ import { AdministrationUserPage } from './pages/dashboard/administration-user-pa
 import { AdministrationStockPage } from './pages/dashboard/administration-stock-page/administration-stock-page';
 import { AdministrationOrderPage } from './pages/dashboard/administration-order-page/administration-order-page';
 import { DashboardLayout } from './components/layouts/dashboard-layout/dashboard-layout';
+import { NoAuthGuard } from './guards/NoAuthGuard/no-auth-guard-guard';
+import { AuthGuard } from './guards/AuthGuard/auth-guard-guard';
+import { AdminGuard } from './guards/AdminGuard/admin-guard-guard';
 
 
 
@@ -29,41 +32,46 @@ export const routes: Routes = [
             },
             {
                 path: 'login',
-                component: LoginPage
+                component: LoginPage,
+                canActivate: [NoAuthGuard]
             },
             {
                 path: 'register',
-                component: RegisterPage
+                component: RegisterPage,
+                canActivate: [NoAuthGuard]
             },
             {
                 path: 'dashboard',
                 component: DashboardLayout,
+                canActivate: [AdminGuard],
                 children: [
                     {
                         path: 'administration-books',
-                        component: AdministrationBookPage,
-
+                        component: AdministrationBookPage
                     },
                     {
                         path: 'administration-users',
-                        component: AdministrationUserPage,
-
+                        component: AdministrationUserPage
                     },
                     {
                         path: 'administration-stock',
-                        component: AdministrationStockPage,
-
+                        component: AdministrationStockPage
                     },
                     {
                         path: 'administration-orders',
-                        component: AdministrationOrderPage,
-
+                        component: AdministrationOrderPage
                     },
+                    {
+                        path: '',
+                        redirectTo: 'administration-books',
+                        pathMatch: 'full'
+                    }
                 ]
             },
-
-
-
+            {
+                path: '**',
+                redirectTo: ''
+            }
         ]
     }
 

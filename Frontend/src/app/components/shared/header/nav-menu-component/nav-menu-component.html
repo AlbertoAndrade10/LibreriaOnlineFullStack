@@ -1,11 +1,12 @@
+<!-- nav-menu-component.html -->
 <div
     class="max-lg:w-full max-lg:fixed max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50">
     <button
         class="lg:hidden fixed top-2 right-4 z-[100] rounded-full bg-white w-9 h-9 flex items-center justify-center border border-gray-200 cursor-pointer"
         (click)="close.emit()">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 fill-black" viewBox="0 0 320.591 320.591">
-            <path d="..."></path>
-            <path d="..."></path>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 fill-black" viewBox="0 0 24 24">
+            <path
+                d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
         </svg>
     </button>
 
@@ -24,9 +25,12 @@
                 libros</a>
         </li>
 
+        @if(isAdmin()){
+
         <li class="max-lg:border-b max-lg:border-gray-300 max-lg:py-3 px-3">
             <a routerLink="/dashboard/administration-books"
                 class="hover:text-blue-700 text-slate-900 block font-medium text-[15px]">Administración</a>
         </li>
+        }
     </ul>
 </div>

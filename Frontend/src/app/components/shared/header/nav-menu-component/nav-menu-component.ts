@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../../services/Auth/auth-service';
 
 
 @Component({
@@ -10,4 +11,23 @@ import { RouterLink } from '@angular/router';
 })
 export class NavMenuComponent {
   @Output() close = new EventEmitter<void>();
+
+  constructor(private authService: AuthService) { }
+
+  isLoggedIn(): boolean {
+    return this.authService.isAuthenticated();
+  }
+
+  isAdmin(): boolean {
+    return this.authService.isAdmin();
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.close.emit();
+  }
+
+  closeMenu(): void {
+    this.close.emit();
+  }
 }

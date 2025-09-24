@@ -1,19 +1,24 @@
+<!-- book-page.html -->
 <div class="mt-8 px-4 sm:px-6 lg:px-8">
 
+    @if (loading) {
+    <div class="flex justify-center items-center h-64">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+    </div>
+    }
+    @if (!loading && showContent) {
     <div class="max-w-2xl mx-auto mb-8 sm:mb-10">
         <app-search-input placeholder="Buscar por nombre, autor..."></app-search-input>
     </div>
-
 
     <div class="text-center mb-8">
         <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
     </div>
 
-
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
-
         <div class="lg:col-span-1 lg:sticky lg:top-[75px] lg:self-start">
-            <app-literary-genres-content-grid></app-literary-genres-content-grid>
+            <!-- PASAR LOS DATOS COMO INPUT -->
+            <app-literary-genres-content-grid [literaryGenres]="literaryGenres"></app-literary-genres-content-grid>
         </div>
 
         <div class="lg:col-span-4">
@@ -25,7 +30,6 @@
         </div>
     </div>
 
-
     <div class=" flex items-center justify-center mt-8 ">
         <app-paginator></app-paginator>
     </div>
@@ -33,4 +37,5 @@
     <div class="text-center mt-10 sm:mt-12">
         <div class="w-20 h-1 bg-blue-500 mx-auto rounded-full"></div>
     </div>
+    }
 </div>

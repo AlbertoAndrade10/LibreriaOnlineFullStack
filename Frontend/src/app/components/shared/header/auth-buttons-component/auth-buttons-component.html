@@ -1,11 +1,17 @@
+<!-- auth-buttons-component.html -->
+@if(!isLoggedInState) {
 <div class="space-x-10">
-
-    <button class="font-medium text-[15px] border-0 outline-0 cursor-pointer ">
-        <a routerLink="/login" class="text-blue-700 hover:underline">Iniciar sesión</a>
+    <button class="font-medium text-[15px] border-0 outline-0 cursor-pointer">
+        <a routerLink="/login" class="text-blue-700 hover:underline">
+            Iniciar sesión
+        </a>
     </button>
 
     <button
         class="px-4 py-2 text-sm rounded-full font-medium text-white border border-blue-600 bg-blue-600 hover:bg-blue-700 cursor-pointer">
-        <a routerLink="/register">Registrarse</a>
+        <a routerLink="/register">
+            Registrarse
+        </a>
     </button>
 </div>
+}
