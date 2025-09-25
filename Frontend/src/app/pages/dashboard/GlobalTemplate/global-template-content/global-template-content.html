@@ -23,7 +23,7 @@
         </div>
     </div>
 
-    <!-- Modal genérico -->
+    <!-- Modal  -->
     @if (showModal) {
     <div class="fixed inset-0 z-[1055] h-full w-full overflow-y-auto overflow-x-hidden  backdrop-blur-sm   outline-none bg-transparent bg-opacity-50 flex items-center justify-center p-4"
         id="globalModal" tabindex="-1" aria-labelledby="globalModalLabel" aria-hidden="false">
@@ -51,18 +51,7 @@
                 <ng-content select="[modal-content]"></ng-content>
             </div>
 
-            <!-- Modal footer -->
-            <div
-                class="flex flex-shrink-0 flex-wrap items-center justify-end rounded-b-lg border-t border-gray-200 p-4 dark:border-gray-700">
-                <button type="button"
-                    class="inline-block rounded bg-gray-200 px-6 py-2 text-sm font-medium uppercase leading-normal text-gray-700 transition duration-150 ease-in-out hover:bg-gray-300 focus:bg-gray-300 focus:outline-none focus:ring-0 active:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500 dark:focus:bg-gray-500 dark:active:bg-gray-400">
-                    Close
-                </button>
-                <button type="button"
-                    class="ms-2 inline-block rounded bg-blue-600 px-6 py-2 text-sm font-medium uppercase leading-normal text-white shadow-md transition duration-150 ease-in-out hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg">
-                    Save changes
-                </button>
-            </div>
+
         </div>
     </div>
     }

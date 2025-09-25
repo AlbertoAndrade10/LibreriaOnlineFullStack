@@ -42,7 +42,7 @@ export class GlobalTemplateContent implements OnInit {
   onModalSave() {
     this.modalSave.emit();
     this.showModal = false;
-    this.modalService.emitOpen(); // Opcional, si necesitas emitir eventos
+    this.modalService.emitOpen();
   }
 
   closeModal() {

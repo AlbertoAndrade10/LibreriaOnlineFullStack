@@ -80,8 +80,7 @@ export class BookForm implements OnInit {
         return;
       }
 
-      // Validar tamaño del archivo (por ejemplo, máximo 5MB)
-      if (file.size > 5 * 1024 * 1024) {
+      if (file.size > 10 * 1024 * 1024) {
         this.errorMessage = 'La imagen no debe superar los 5MB';
         return;
       }
@@ -90,7 +89,7 @@ export class BookForm implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.previewUrl = e.target.result;
-        this.errorMessage = null; // Limpiar error si se selecciona una imagen válida
+        this.errorMessage = null;
       };
       reader.readAsDataURL(file);
     }
