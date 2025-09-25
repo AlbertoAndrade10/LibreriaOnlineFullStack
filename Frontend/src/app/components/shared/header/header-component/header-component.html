@@ -32,27 +32,36 @@
         <div class="flex items-center ml-auto space-x-6">
             <!-- Mostrar información del usuario si está logeado -->
             @if (isLoggedIn) {
-            <div class="relative" #dropdown>
-                <button class="flex items-center space-x-2 focus:outline-none">
+            <div class="relative" #dropdownRef>
+                <button (click)="toggleDropdown()" class="flex items-center space-x-2 focus:outline-none">
                     <div
                         class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white text-sm font-medium">
                         {{ getInitials() }}
                     </div>
                     <span class="hidden md:block text-sm font-medium text-gray-700">{{ userName }}</span>
+                    <!-- Flecha que indica que es un dropdown -->
+                    <svg class="w-4 h-4 text-gray-600 transition-transform duration-200"
+                        [class.rotate-180]="isDropDownOpen" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
                 </button>
 
                 <!-- Dropdown menu -->
+                @if (isDropDownOpen) {
                 <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
-                    <a routerLink="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mi
+                    <a routerLink="/profile" (click)="closeDropdown()"
+                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Mi
                         perfil</a>
                     @if (isAdmin) {
-                    <a routerLink="/dashboard/administration-books"
+                    <a routerLink="/dashboard/administration-books" (click)="closeDropdown()"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Panel de administración</a>
                     }
-                    <button (click)="logout()"
+                    <button (click)="logoutAndClose()"
                         class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Cerrar
                         sesión</button>
                 </div>
+                }
             </div>
             } @else {
             <app-auth-buttons-component></app-auth-buttons-component>

@@ -1,15 +1,14 @@
-import { Component, Inject, OnDestroy, OnInit, PLATFORM_ID } from '@angular/core';
+import { Component, HostListener, Inject, OnDestroy, OnInit, PLATFORM_ID, ViewChild, ElementRef } from '@angular/core';
 import { LogoComponent } from "../logo-component/logo-component";
 import { AuthButtonsComponent } from "../auth-buttons-component/auth-buttons-component";
 import { HamburgerButtonComponent } from "../hamburger-button-component/hamburger-button-component";
 import { NavMenuComponent } from "../nav-menu-component/nav-menu-component";
-import { Router, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../../services/Auth/auth-service';
 import { isPlatformBrowser } from '@angular/common';
 import { AuthStateService } from '../../../../services/Auth/AuthState/auth-state-service';
 import { Subscription } from 'rxjs';
-
 
 @Component({
   selector: 'app-header-component',
@@ -23,7 +22,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
   userName: string | null = null;
+  isDropDownOpen = false;
   private subscription = new Subscription();
+
+  @ViewChild('dropdownRef', { static: false }) dropdownRef!: ElementRef;
 
   constructor(
     @Inject(PLATFORM_ID) private platformId: Object,
@@ -48,6 +50,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  toggleDropdown() {
+    this.isDropDownOpen = !this.isDropDownOpen;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event) {
+    const target = event.target as HTMLElement;
+    if (this.isDropDownOpen && !this.dropdownRef?.nativeElement.contains(target)) {
+      this.isDropDownOpen = false;
+    }
+  }
+  closeDropdown() {
+    this.isDropDownOpen = false;
+  }
   updateAuthStatus(): void {
     this.isLoggedIn = this.authService.isAuthenticated();
     this.isAdmin = this.authService.isAdmin();
@@ -69,7 +85,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.router.navigate(['/']);
     }
   }
-
+  logoutAndClose() {
+    this.closeDropdown();
+    this.logout();
+  }
   getInitials(): string {
     if (this.userName) {
       const names = this.userName.split(' ');
