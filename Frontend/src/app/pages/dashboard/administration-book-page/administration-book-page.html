@@ -1,4 +1,4 @@
-<app-global-template-content>
+<app-global-template-content modalTitle="Agregar Libro">
     <app-category-dash-board-grid></app-category-dash-board-grid>
     <div shearch-component-dashboard>
         <app-shearch-component-dashboard placeholder="Buscar por nombre, autor..."></app-shearch-component-dashboard>
@@ -14,7 +14,15 @@
         <app-action-component buttonText="Agregar Libro"></app-action-component>
     </div>
 
+    <!-- Contenido del modal con el formulario -->
+    <div modal-content>
+        <app-book-form (bookSubmit)="onBookSubmit($event)" (cancel)="closeModal()">
+        </app-book-form>
+    </div>
+
     <div table-component>
-        <app-table-component [headers]="tableHeaders" [data]="tableData"></app-table-component>
+        <app-table-component [headers]="tableHeaders" [data]="tableData" (modify)="onModify($event)"
+            (delete)="onDelete($event)">
+        </app-table-component>
     </div>
 </app-global-template-content>

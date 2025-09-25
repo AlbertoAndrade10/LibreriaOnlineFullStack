@@ -12,7 +12,22 @@
             @for (row of data; track $index) {
             <tr class="hover:bg-gray-50 transition-colors duration-150">
                 @for (cell of row; track $index) {
+                @if ($index === headers.length - 1 && headers[$index].toLowerCase().includes('acciones')) {
+                <!-- Columna de acciones - renderizar botones dinámicamente -->
+                <td class="py-3 px-4 text-sm text-gray-700 whitespace-nowrap">
+                    <div class="flex space-x-2">
+                        @for (action of actionConfig; track action) {
+                        <button class="cursor-pointer" (click)="onAction(row, $index, action)"
+                            [class]="action.class + ' text-white px-3 py-1 rounded text-sm transition-colors'"
+                            type="button">
+                            {{ action.name }}
+                        </button>
+                        }
+                    </div>
+                </td>
+                } @else {
                 <td class="py-3 px-4 text-sm text-gray-700 whitespace-nowrap">{{ cell }}</td>
+                }
                 }
             </tr>
             }

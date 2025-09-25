@@ -13,6 +13,7 @@ import { DashboardLayout } from './components/layouts/dashboard-layout/dashboard
 import { NoAuthGuard } from './guards/NoAuthGuard/no-auth-guard-guard';
 import { AuthGuard } from './guards/AuthGuard/auth-guard-guard';
 import { AdminGuard } from './guards/AdminGuard/admin-guard-guard';
+import { ProfilePage } from './pages/profile/profile-page/profile-page';
 
 
 
@@ -39,6 +40,10 @@ export const routes: Routes = [
                 path: 'register',
                 component: RegisterPage,
                 canActivate: [NoAuthGuard]
+            },
+            {
+                path: 'profile',
+                component: ProfilePage
             },
             {
                 path: 'dashboard',

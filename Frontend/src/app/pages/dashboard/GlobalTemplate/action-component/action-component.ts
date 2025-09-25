@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
+import { ModalService } from '../service/modal-service';
 
 @Component({
   selector: 'app-action-component',
@@ -10,7 +11,11 @@ export class ActionComponent {
   @Input() buttonText: string = '';
   @Output() actionClick = new EventEmitter<void>();
 
+  constructor(private modalService: ModalService) { }
+
   onActionClick() {
+    this.modalService.openModal();
     this.actionClick.emit();
   }
+
 }

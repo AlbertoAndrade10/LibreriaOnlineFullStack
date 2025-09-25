@@ -17,8 +17,8 @@ export class BookService extends BaseApi {
     return this.getById<Book>(API_ENDPOINTS.BOOKS, id);
   }
 
-  createBook(book: BookCreateDTO): Observable<Book> {
-    return this.post<Book>(API_ENDPOINTS.BOOKS, book);
+  createBook(bookData: FormData): Observable<Book> {
+    return this.post<Book>(API_ENDPOINTS.BOOKS, bookData);
   }
 
   updateBook(id: number, book: BookUpdateDTO): Observable<Book> {
