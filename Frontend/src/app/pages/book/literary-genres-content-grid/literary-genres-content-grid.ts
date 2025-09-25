@@ -18,13 +18,13 @@ export class LiteraryGenresContentGrid implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    // Marcar si se recibieron datos por input
+
     this.hasReceivedData = this.literaryGenres.length > 0;
 
     if (this.hasReceivedData) {
-      console.log("LiteraryGenresContentGrid: Datos recibidos por input, NO se hará petición");
+      console.log("LiteraryGenresContentGrid: Datos recibidos por input");
     } else {
-      console.log("LiteraryGenresContentGrid: No se recibieron datos por input, NO se hará petición (por diseño)");
+      console.log("LiteraryGenresContentGrid: No se recibieron datos por input");
     }
   }
 }
