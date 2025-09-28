@@ -15,7 +15,7 @@ Este proyecto es una aplicación de ecommerce de libros construida con arquitect
 | `Inventory-Service` | Gestión de stock de libros |
 | `Config-Server` | Repositorio privado de almacenamiento para gestionar datos sensibles de la aplicación |
 | `LoadBalancer` | Balaceador de carga para la aplicación |
-| `Messaging-Catching` | Mensajería y caché con RabbitMQ y Redis |
+| `Messaging-Catching` | Mensajería y caché con Kafka y Redis |
 | `Eureka-Server` | Gestión y descubrimiento de microservicios |
 
 ---
