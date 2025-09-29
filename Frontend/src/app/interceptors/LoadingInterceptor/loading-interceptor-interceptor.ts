@@ -10,13 +10,13 @@ export class LoadingInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.totalRequests++;
-    // -->> CREAR UN COMPONENTE SPINNER PARA MOSTRARLO AQUI <<--
+
 
     return next.handle(req).pipe(
       finalize(() => {
         this.totalRequests--;
         if (this.totalRequests === 0) {
-          // -->> Ocultar loading indicator <<--
+
         }
       })
     );

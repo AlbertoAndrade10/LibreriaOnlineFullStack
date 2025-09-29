@@ -1,4 +1,3 @@
-<!-- header-component.html -->
 <header class="sticky top-0 flex shadow-lg py-4 px-4 sm:px-10 bg-white min-h-[70px] tracking-wide z-50">
     <div class="flex flex-wrap items-center justify-between gap-4 w-full">
         <app-logo-component></app-logo-component>
@@ -14,7 +13,7 @@
                         class="hover:text-blue-700 text-slate-900 block font-medium text-[15px]">Nuestros libros</a>
                 </li>
 
-                <!-- Mostrar Administración solo si es admin -->
+                <!-- admin control -->
                 @if (isAdmin) {
                 <li>
                     <a routerLink="/dashboard/administration-books"
@@ -30,7 +29,7 @@
         }
 
         <div class="flex items-center ml-auto space-x-6">
-            <!-- Mostrar información del usuario si está logeado -->
+            <!-- user info -->
             @if (isLoggedIn) {
             <div class="relative" #dropdownRef>
                 <button (click)="toggleDropdown()" class="flex items-center space-x-2 focus:outline-none">

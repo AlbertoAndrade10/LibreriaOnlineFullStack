@@ -57,22 +57,12 @@ public class BookController {
             @RequestParam("image") MultipartFile image) {
 
         try {
-            // Agregamos logs para ver qué llega
-            System.out.println("bookName: " + bookName);
-            System.out.println("authorId: " + authorId);
-            System.out.println("literaryGenreId: " + literaryGenreId);
-            System.out.println("price: " + price);
-            System.out.println("description: " + description);
-            System.out.println("stock: " + stock);
-            System.out.println("image original name: " + (image != null ? image.getOriginalFilename() : "null"));
 
-            // Validar que la imagen no sea nula o vacía
             if (image == null || image.isEmpty()) {
                 System.out.println("ERROR: Image is null or empty");
                 return ResponseEntity.badRequest().body(null);
             }
 
-            // Crear el DTO manualmente
             BookCreateDTO bookCreateDTO = new BookCreateDTO();
             bookCreateDTO.setBookName(bookName);
             bookCreateDTO.setAuthorId(authorId);
@@ -81,11 +71,9 @@ public class BookController {
             bookCreateDTO.setDescription(description);
             bookCreateDTO.setStock(stock);
 
-            // Subir imagen y asignar URL
             String imageUrl = cloudinaryService.uploadImage(image);
             bookCreateDTO.setUrlImage(imageUrl);
 
-            // Crear libro
             BookDTO createdBook = bookService.createBook(bookCreateDTO);
             return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
 
