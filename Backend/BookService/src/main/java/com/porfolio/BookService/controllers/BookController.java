@@ -1,6 +1,7 @@
 package com.porfolio.BookService.controllers;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,29 +48,50 @@ public class BookController {
 
     @PostMapping
     public ResponseEntity<BookDTO> createBook(
-            @RequestParam("book") String bookJson,
+            @RequestParam("bookName") String bookName,
+            @RequestParam("authorId") Long authorId,
+            @RequestParam("literaryGenreId") Long literaryGenreId,
+            @RequestParam(value = "price", required = false) BigDecimal price,
+            @RequestParam(value = "description", required = false) String description,
+            @RequestParam("stock") Integer stock,
             @RequestParam("image") MultipartFile image) {
+
         try {
-            // mandatory image
+            // Agregamos logs para ver qué llega
+            System.out.println("bookName: " + bookName);
+            System.out.println("authorId: " + authorId);
+            System.out.println("literaryGenreId: " + literaryGenreId);
+            System.out.println("price: " + price);
+            System.out.println("description: " + description);
+            System.out.println("stock: " + stock);
+            System.out.println("image original name: " + (image != null ? image.getOriginalFilename() : "null"));
+
+            // Validar que la imagen no sea nula o vacía
             if (image == null || image.isEmpty()) {
-                return ResponseEntity.badRequest()
-                        .body(null);
+                System.out.println("ERROR: Image is null or empty");
+                return ResponseEntity.badRequest().body(null);
             }
 
-            // to object
-            ObjectMapper objectMapper = new ObjectMapper();
-            BookCreateDTO bookCreateDTO = objectMapper.readValue(bookJson, BookCreateDTO.class);
+            // Crear el DTO manualmente
+            BookCreateDTO bookCreateDTO = new BookCreateDTO();
+            bookCreateDTO.setBookName(bookName);
+            bookCreateDTO.setAuthorId(authorId);
+            bookCreateDTO.setLiteraryGenreId(literaryGenreId);
+            bookCreateDTO.setPrice(price);
+            bookCreateDTO.setDescription(description);
+            bookCreateDTO.setStock(stock);
 
-            // Upload Cloudinary url
+            // Subir imagen y asignar URL
             String imageUrl = cloudinaryService.uploadImage(image);
             bookCreateDTO.setUrlImage(imageUrl);
 
-            // create book with cloudinary utl
+            // Crear libro
             BookDTO createdBook = bookService.createBook(bookCreateDTO);
             return new ResponseEntity<>(createdBook, HttpStatus.CREATED);
+
         } catch (IOException e) {
-            return ResponseEntity.badRequest()
-                    .body(null);
+            System.out.println("ERROR: " + e.getMessage());
+            return ResponseEntity.badRequest().body(null);
         }
     }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseApi } from '../BaseApiService/base-api';
 import { Observable } from 'rxjs';
-import { Book, BookCreateDTO, BookUpdateDTO } from '../../models/book.model';
+import { Book, BookUpdateDTO } from '../../models/book.model';
 import { API_ENDPOINTS } from '../../environment/environment';
 
 @Injectable({
@@ -18,7 +18,7 @@ export class BookService extends BaseApi {
   }
 
   createBook(bookData: FormData): Observable<Book> {
-    return this.post<Book>(API_ENDPOINTS.BOOKS, bookData);
+    return this.http.post<Book>(API_ENDPOINTS.BOOKS, bookData);
   }
 
   updateBook(id: number, book: BookUpdateDTO): Observable<Book> {

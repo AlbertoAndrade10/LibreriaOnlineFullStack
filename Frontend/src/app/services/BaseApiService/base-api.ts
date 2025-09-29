@@ -31,10 +31,19 @@ export class BaseApi {
   }
 
   protected post<T>(url: string, data: any): Observable<T> {
-    return this.http.post<T>(url, data, this.httpOptions)
-      .pipe(
-        catchError(this.handleError)
-      );
+
+    if (data instanceof FormData) {
+
+      return this.http.post<T>(url, data)
+
+        .pipe(catchError(this.handleError));
+
+    } else {
+
+      return this.http.post<T>(url, data, this.httpOptions)
+
+        .pipe(catchError(this.handleError));
+    }
   }
 
   protected put<T>(url: string, id: number, data: any): Observable<T> {
