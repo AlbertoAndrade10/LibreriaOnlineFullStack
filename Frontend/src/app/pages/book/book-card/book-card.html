@@ -1,0 +1,38 @@
+<div class="bg-white rounded-xl shadow-lg overflow-hidden max-w-xs w-full">
+    <!-- Image -->
+    <div class="w-full h-48 overflow-hidden">
+        <picture>
+            <img [src]="book.urlImage || 'ruta-imagen-por-defecto.jpg'" [alt]="book.bookName || 'Imagen del libro'"
+                class="object-cover w-full h-full">
+        </picture>
+    </div>
+
+    <!-- card content -->
+    <div class="p-4">
+        <!-- genre -->
+        <p class="text-sm font-medium text-blue-600 uppercase tracking-wide">{{book.literaryGenre.literaryGenreName ||
+            'Sin genero'}}
+        </p>
+
+        <!-- book title -->
+        <h3 class="text-lg font-bold text-gray-800 mt-1">{{book.bookName}}</h3>
+
+        <!-- author name -->
+        <p class="text-gray-600 text-sm mt-1">{{book.author.authorName}}</p>
+
+        <!-- price -->
+        <p class="text-lg font-semibold text-gray-900 mt-2">{{book.price}} €</p>
+
+        <!-- buttons -->
+        <div class="mt-4 flex space-x-3">
+            <button
+                class="bg-blue-100 hover:bg-blue-200 text-black py-2 px-4 rounded-lg text-sm font-medium transition-colors cursor-pointer">
+                Añadir al carrito
+            </button>
+            <button
+                class="bg-green-100 hover:bg-green-200 text-black py-2 px-4 rounded-lg text-sm font-medium transition-colors cursor-pointer">
+                Comprar
+            </button>
+        </div>
+    </div>
+</div>

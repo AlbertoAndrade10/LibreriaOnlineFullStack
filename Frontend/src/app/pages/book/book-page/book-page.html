@@ -1,6 +1,5 @@
 <!-- book-page.html -->
 <div class="mt-8 px-4 sm:px-6 lg:px-8">
-
     @if (loading) {
     <div class="flex justify-center items-center h-64">
         <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
@@ -17,20 +16,21 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
         <div class="lg:col-span-1 lg:sticky lg:top-[75px] lg:self-start">
-            <!-- PASAR LOS DATOS COMO INPUT -->
             <app-literary-genres-content-grid [literaryGenres]="literaryGenres"></app-literary-genres-content-grid>
         </div>
 
         <div class="lg:col-span-4">
-            <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-                <div>
-                    <app-book-card-component [books]="books"></app-book-card-component>
-                </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                @for (book of books; track book.id) {
+                <app-book-card [book]="book"></app-book-card>
+                } @empty {
+                <p class="text-center text-gray-500 col-span-full">No se encontraron libros.</p>
+                }
             </div>
         </div>
     </div>
 
-    <div class=" flex items-center justify-center mt-8 ">
+    <div class="flex items-center justify-center mt-8">
         <app-paginator></app-paginator>
     </div>
 

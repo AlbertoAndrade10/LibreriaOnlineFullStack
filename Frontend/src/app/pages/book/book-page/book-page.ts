@@ -1,7 +1,6 @@
 import { Component, Inject, OnInit, PLATFORM_ID } from '@angular/core';
 import { SearchInput } from "../search-input/search-input";
 import { LiteraryGenresContentGrid } from "../literary-genres-content-grid/literary-genres-content-grid";
-import { BookCardComponent } from "../book-card-component/book-card-component";
 import { Paginator } from "../paginator/paginator";
 import { BookService } from '../../../services/BookService/book-service';
 import { Book } from '../../../models/book.model';
@@ -9,14 +8,16 @@ import { LiteraryGenre } from '../../../models/LiteraryGenre.model';
 import { LiteraryGenreService } from '../../../services/LiteraryGenreService/literary-genre-service';
 import { isPlatformBrowser } from '@angular/common';
 import { forkJoin } from 'rxjs';
+import { BookCard } from "../book-card/book-card";
 
 @Component({
   selector: 'app-book-page',
-  imports: [SearchInput, LiteraryGenresContentGrid, BookCardComponent, Paginator],
+  imports: [SearchInput, LiteraryGenresContentGrid, Paginator, BookCard],
   templateUrl: './book-page.html',
   styleUrl: './book-page.css'
 })
-// book-page.component.ts
+
+
 export class BookPage implements OnInit {
   books: Book[] = [];
   literaryGenres: LiteraryGenre[] = [];
@@ -41,7 +42,6 @@ export class BookPage implements OnInit {
     this.loading = true;
     this.error = null;
 
-    // Usar forkJoin para esperar ambas peticiones
     forkJoin({
       books: this.bookService.getAllBooks(),
       genres: this.literaryGenreService.getAllGenres()
