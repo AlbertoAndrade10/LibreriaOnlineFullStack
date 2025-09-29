@@ -7,7 +7,7 @@ Este proyecto es una aplicación de ecommerce de libros construida con arquitect
 | Microservicio | Descripción |
 |---------------|-------------|
 | `Api-Gateway` | Punto de entrada único para todos los microservicios, seguridad con tokens |
-| `Auth-Service (Spring Boot + SupaBase)` | Registro y autenticación de usuarios |
+| `Auth-Service` | Registro y autenticación de usuarios |
 | `Books-Service` | Gestión de libros |
 | `Cart-Service` | Gestión del carrito |
 | `Order-Microservice` | Gestión de pedidos |
@@ -15,7 +15,7 @@ Este proyecto es una aplicación de ecommerce de libros construida con arquitect
 | `Inventory-Service` | Gestión de stock de libros |
 | `Config-Server` | Repositorio privado de almacenamiento para gestionar datos sensibles de la aplicación |
 | `LoadBalancer` | Balaceador de carga para la aplicación |
-| `Messaging-Catching` | Mensajería y caché con RabbitMQ y Redis |
+| `Messaging-Catching` | Mensajería y caché con Kafka y Redis |
 | `Eureka-Server` | Gestión y descubrimiento de microservicios |
 
 ---
