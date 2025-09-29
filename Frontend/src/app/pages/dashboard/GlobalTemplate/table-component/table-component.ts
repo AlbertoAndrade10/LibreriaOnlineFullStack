@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { BookService } from '../../../../services/BookService/book-service';
 
 export interface ActionConfig {
   name: string;
@@ -22,6 +23,8 @@ export class TableComponent {
 
   @Output() modify = new EventEmitter<any>();
   @Output() delete = new EventEmitter<any>();
+
+  constructor(private readonly bookService: BookService) { }
 
   onAction(row: any[], index: number, action: ActionConfig) {
     if (action.event === 'modify') {

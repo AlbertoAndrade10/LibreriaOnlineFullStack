@@ -14,6 +14,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { ModalService } from '../GlobalTemplate/service/modal-service';
 import { BookForm } from '../GlobalTemplate/forms/book-form/book-form';
 
+
 @Component({
   selector: 'app-administration-book-page',
   imports: [GlobalTemplateContent, TitleComponent, ActionComponent, TableComponent, ShearchComponentDashboard, CategoryDashBoardGrid, BookForm],
@@ -49,7 +50,6 @@ export class AdministrationBookPage implements OnInit {
     this.loading = true;
     this.error = null;
 
-    // Usar forkJoin para esperar ambas peticiones
     forkJoin({
       books: this.bookService.getAllBooks(),
       genres: this.literaryGenreService.getAllGenres()
@@ -90,14 +90,12 @@ export class AdministrationBookPage implements OnInit {
     this.bookService.createBook(formData).subscribe({
       next: (newBook) => {
         console.log('Libro creado exitosamente:', newBook);
-        this.loadAllData(); // Recargar los datos
-        this.modalService.closeModal(); // Cerrar el modal
-        // Aquí puedes mostrar un mensaje de éxito si lo deseas
+        this.loadAllData();
+        this.modalService.closeModal();
         alert('Libro creado exitosamente!');
       },
       error: (error) => {
         console.error('Error al crear el libro:', error);
-        // Aquí puedes manejar el error y mostrar un mensaje al usuario
         alert('Error al crear el libro: ' + (error.error?.message || 'Ocurrió un error'));
       }
     });
@@ -116,8 +114,27 @@ export class AdministrationBookPage implements OnInit {
 
   onDelete(event: any) {
     console.log('Eliminar:', event);
+
+
+    const bookId = parseInt(event.row[0]);
     const bookIndex = event.index;
     const book = this.books[bookIndex];
+
     console.log('Libro a eliminar:', book);
+
+
+    if (confirm(`¿Estás seguro de que deseas eliminar el libro "${book.bookName}"?`)) {
+      this.bookService.deleteBook(bookId).subscribe({
+        next: () => {
+          console.log('Libro eliminado exitosamente');
+
+          this.loadAllData();
+        },
+        error: (error) => {
+          console.error('Error al eliminar el libro:', error);
+          alert('Error al eliminar el libro: ' + (error.error?.message || 'Ocurrió un error'));
+        }
+      });
+    }
   }
 }
