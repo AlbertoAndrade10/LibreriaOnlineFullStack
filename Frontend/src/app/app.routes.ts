@@ -14,6 +14,7 @@ import { NoAuthGuard } from './guards/NoAuthGuard/no-auth-guard-guard';
 import { AuthGuard } from './guards/AuthGuard/auth-guard-guard';
 import { AdminGuard } from './guards/AdminGuard/admin-guard-guard';
 import { ProfilePage } from './pages/profile/profile-page/profile-page';
+import { CartPage } from './pages/cart/cart-page/cart-page';
 
 
 
@@ -44,6 +45,10 @@ export const routes: Routes = [
             {
                 path: 'profile',
                 component: ProfilePage
+            },
+            {
+                path: 'cart',
+                component: CartPage
             },
             {
                 path: 'dashboard',
