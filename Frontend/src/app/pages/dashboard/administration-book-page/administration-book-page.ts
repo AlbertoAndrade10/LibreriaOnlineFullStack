@@ -61,6 +61,7 @@ export class AdministrationBookPage implements OnInit {
         this.loading = false;
         this.showContent = true;
       },
+
       error: (err) => {
         console.error("Error al cargar los datos:", err);
         this.error = "No se pudieron cargar los datos";
@@ -113,8 +114,6 @@ export class AdministrationBookPage implements OnInit {
   }
 
   onDelete(event: any) {
-    console.log('Eliminar:', event);
-
 
     const bookId = parseInt(event.row[0]);
     const bookIndex = event.index;
