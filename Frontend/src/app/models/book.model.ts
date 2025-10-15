@@ -2,7 +2,7 @@ import { Author } from "./author.model";
 import { LiteraryGenre } from "./LiteraryGenre.model";
 
 export interface Book {
-    id?: number;
+    id: number;
     bookName: string;
     author: Author;
     literaryGenre: LiteraryGenre;

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CategoryDashBoardGrid } from "../../../pages/dashboard/category-dash-board-grid/category-dash-board-grid";
+import { CategoryDashBoardGrid } from "../../shared/grid-admin/category-dash-board-grid/category-dash-board-grid";
 import { RouterOutlet } from '@angular/router';
 
 
