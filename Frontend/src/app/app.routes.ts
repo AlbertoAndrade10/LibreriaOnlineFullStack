@@ -15,6 +15,7 @@ import { AuthGuard } from './guards/AuthGuard/auth-guard-guard';
 import { AdminGuard } from './guards/AdminGuard/admin-guard-guard';
 import { ProfilePage } from './pages/profile/profile-page/profile-page';
 import { CartPage } from './pages/cart/cart-page/cart-page';
+import { AddBookForm } from './components/shared/forms/add-book-form/add-book-form';
 
 
 
@@ -49,6 +50,10 @@ export const routes: Routes = [
             {
                 path: 'cart',
                 component: CartPage
+            },
+            {
+                path: 'formulario',
+                component: AddBookForm
             },
             {
                 path: 'dashboard',

@@ -8,7 +8,7 @@ import { LiteraryGenre } from '../../../models/LiteraryGenre.model';
 import { LiteraryGenreService } from '../../../services/LiteraryGenreService/literary-genre-service';
 import { isPlatformBrowser } from '@angular/common';
 import { forkJoin } from 'rxjs';
-import { BookCard } from "../book-card/book-card";
+import { BookCard } from "../../../components/cards/book-card/book-card";
 
 @Component({
   selector: 'app-book-page',

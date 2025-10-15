@@ -1,29 +1,31 @@
-<div class=" mt-5  h-full">
-    <section class="flex items-center justify-center ">
+<div class="mt-5 h-full">
+
+    <section class="flex items-center justify-start ">
         <div>
             <h1 class="text-3xl font-bold">Administración de Libros</h1>
         </div>
     </section>
 
-    <section class=" flex items-center justify-center mt-5 ">
+    <section class=" flex items-center justify-start mt-5 ">
         <div class="space-x-5">
             <input
                 class="w-[500px] px-4 py-3 border-2 border-gray-300 rounded-2xl focus:outline-none focus:border-gray-500 transition-all"
                 type="text" name="" id="" placeholder="Buscar por nombre de libro, autor o genero">
             <button
-                class="px-6 py-3 cursor-pointer bg-gray-800 text-white rounded-xl hover:bg-black transition-colors">Buscar</button>
+                class="px-3 py-2 cursor-pointer bg-gray-800 text-white rounded-xl hover:bg-black transition-colors">Buscar</button>
         </div>
     </section>
 
-    <section class="flex items-center justify-end ">
+    <section class="flex items-center justify-end mt-4">
         <div class="mr-20">
-            <button
-                class="px-3 py-2 cursor-pointer bg-blue-500 text-white rounded-xl hover:bg-blue-400 transition-colors">Añadir
-                libro</button>
+            <button (click)="toggleAddForm()"
+                class="px-3 py-2 cursor-pointer bg-blue-500 text-white rounded-xl hover:bg-blue-400 transition-colors">
+                {{ showAddForm ? 'Cancelar' : 'Añadir libro' }}
+            </button>
         </div>
     </section>
 
-    <section class=" flex items-center justify-center">
+    <section class=" flex items-center justify-center mt-6">
         <div class="p-4 w-full">
             <table class="min-w-full border-collapse">
                 <caption class="text-lg font-semibold mb-4 text-gray-800">Lista de Libros</caption>
@@ -35,17 +37,17 @@
                         <th class="py-2 px-4 text-left text-gray-600 font-medium">Genero</th>
                         <th class="py-2 px-4 text-left text-gray-600 font-medium">Precio</th>
                         <th class="py-2 px-4 text-left text-gray-600 font-medium">Stock</th>
-
                     </tr>
                 </thead>
                 <tbody>
+                    @for( book of books; track book.id){
                     <tr class="border-b border-gray-100 hover:bg-gray-50">
-                        <td class="py-3 px-4 text-gray-800">1</td>
-                        <td class="py-3 px-4 text-gray-800">Nombre libro</td>
-                        <td class="py-3 px-4 text-gray-800">Nombre Autor</td>
-                        <td class="py-3 px-4 text-gray-800">Genero</td>
-                        <td class="py-3 px-4 text-gray-800">100</td>
-                        <td class="py-3 px-4 text-gray-800">100</td>
+                        <td class="py-3 px-4 text-gray-800">{{book.id}}</td>
+                        <td class="py-3 px-4 text-gray-800">{{book.bookName}}</td>
+                        <td class="py-3 px-4 text-gray-800">{{book.author.authorName}}</td>
+                        <td class="py-3 px-4 text-gray-800">{{book.literaryGenre.literaryGenreName}}</td>
+                        <td class="py-3 px-4 text-gray-800">{{book.price}}</td>
+                        <td class="py-3 px-4 text-gray-800">{{book.stock}}</td>
                         <td class="py-4 px-6 flex space-x-2">
                             <button
                                 class="bg-blue-100 hover:bg-blue-200 text-black py-2 px-3 rounded-lg text-sm font-medium transition-colors cursor-pointer">
@@ -57,10 +59,26 @@
                             </button>
                         </td>
                     </tr>
+                    }
+                    @empty {
+                    <tr>
+                        <td colspan="7" class="py-4 px-4 text-center text-gray-500">No hay libros disponibles.</td>
+                    </tr>
+                    }
                 </tbody>
             </table>
         </div>
     </section>
 
+    <!-- modal addBookForm -->
+    @if(showAddForm) {
+    <div class="fixed inset-0 bg-white/5 backdrop-blur-sm flex items-center justify-center z-50 p-4 "
+        (click)="toggleAddForm()">
+        <!-- Contenido del Modal -->
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-0" (click)="$event.stopPropagation()">
+            <app-add-book-form></app-add-book-form>
+        </div>
+    </div>
+    }
 
 </div>
