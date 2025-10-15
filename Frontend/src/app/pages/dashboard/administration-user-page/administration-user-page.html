@@ -1,0 +1,64 @@
+<div class=" mt-5  h-full">
+    <section class="flex items-center justify-center ">
+        <div>
+            <h1 class="text-3xl font-bold">Administración de Usuarios</h1>
+        </div>
+    </section>
+
+    <section class=" flex items-center justify-center mt-5 ">
+        <div class="space-x-5">
+            <input
+                class="w-[500px] px-4 py-3 border-2 border-gray-300 rounded-2xl focus:outline-none focus:border-gray-500 transition-all"
+                type="text" name="" id="" placeholder="Buscar por nombre de usuario, email o rol">
+            <button
+                class="px-6 py-3 cursor-pointer bg-gray-800 text-white rounded-xl hover:bg-black transition-colors">Buscar</button>
+        </div>
+    </section>
+
+    <section class="flex items-center justify-end ">
+        <div class="mr-20">
+            <button
+                class="px-3 py-2 cursor-pointer bg-blue-500 text-white rounded-xl hover:bg-blue-400 transition-colors">Añadir</button>
+        </div>
+    </section>
+
+    <section class=" flex items-center justify-center">
+        <div class="p-4 w-full">
+            <table class="min-w-full border-collapse">
+                <caption class="text-lg font-semibold mb-4 text-gray-800">Lista de Libros</caption>
+                <thead>
+                    <tr class="border-b border-gray-200">
+                        <th class="py-2 px-4 text-left text-gray-600 font-medium">IdUsuario</th>
+                        <th class="py-2 px-4 text-left text-gray-600 font-medium">NombreUsuario</th>
+                        <th class="py-2 px-4 text-left text-gray-600 font-medium">CorreoElectronico</th>
+                        <th class="py-2 px-4 text-left text-gray-600 font-medium">Estado</th>
+                        <th class="py-2 px-4 text-left text-gray-600 font-medium">Rol</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-b border-gray-100 hover:bg-gray-50">
+                        <td class="py-3 px-4 text-gray-800">1</td>
+                        <td class="py-3 px-4 text-gray-800">Nombre usuario</td>
+                        <td class="py-3 px-4 text-gray-800">pepeluis@gmail.com</td>
+                        <td class="py-3 px-4 text-gray-800">Activo</td>
+                        <td class="py-3 px-4 text-gray-800">USER</td>
+
+                        <td class="py-4 px-6 flex space-x-2">
+                            <button
+                                class="bg-blue-100 hover:bg-blue-200 text-black py-2 px-3 rounded-lg text-sm font-medium transition-colors cursor-pointer">
+                                Sancionar
+                            </button>
+                            <button
+                                class="bg-green-100 hover:bg-green-200 text-black py-2 px-4 rounded-lg text-sm font-medium transition-colors cursor-pointer">
+                                Inhabilitar
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+
+</div>
