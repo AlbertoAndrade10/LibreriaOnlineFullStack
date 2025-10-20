@@ -29,13 +29,16 @@ export class AdministrationBookPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("AdministrationBookPage cargado");
+
     if (isPlatformBrowser(this.platformId)) {
-      console.log("Mostrando todos los libros");
+
       this.loadAllData();
     }
   }
-
+  //visible form
+  toggleAddForm() {
+    this.showAddForm = !this.showAddForm;
+  }
 
   //getAllBooks
   loadAllData() {
@@ -60,12 +63,25 @@ export class AdministrationBookPage implements OnInit {
     });
   }
 
+  //deleteBook
+  deleteBook(bookId: number) {
 
-  //visible form
-  toggleAddForm() {
-    this.showAddForm = !this.showAddForm;
+    const confirmation = confirm("¿Estás seguro de que deseas eliminar este libro?");
+    if (!confirmation) {
+      return;
+    }
+
+    this.bookService.deleteBook(bookId).subscribe({
+      next: () => {
+        this.books = this.books.filter(book => book.id !== bookId);
+        alert("Libro eliminado exitosamente.");
+      },
+      error: (err) => {
+        console.error("Error al eliminar el libro:", err);
+        alert("Hubo un error al eliminar el libro. Por favor, inténtalo de nuevo.");
+        this.error = "No se pudo eliminar el libro";
+      }
+    });
   }
-
-
 
 }

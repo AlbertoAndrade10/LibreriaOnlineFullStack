@@ -53,7 +53,7 @@
                                 class="bg-blue-100 hover:bg-blue-200 text-black py-2 px-3 rounded-lg text-sm font-medium transition-colors cursor-pointer">
                                 Editar
                             </button>
-                            <button
+                            <button (click)="deleteBook(book.id)"
                                 class="bg-green-100 hover:bg-green-200 text-black py-2 px-4 rounded-lg text-sm font-medium transition-colors cursor-pointer">
                                 Eliminar
                             </button>
@@ -74,7 +74,7 @@
     @if(showAddForm) {
     <div class="fixed inset-0 bg-white/5 backdrop-blur-sm flex items-center justify-center z-50 p-4 "
         (click)="toggleAddForm()">
-        <!-- Contenido del Modal -->
+        <!-- content modal -->
         <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-0" (click)="$event.stopPropagation()">
             <app-add-book-form></app-add-book-form>
         </div>

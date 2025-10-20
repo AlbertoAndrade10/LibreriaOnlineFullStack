@@ -16,6 +16,8 @@ import { AdminGuard } from './guards/AdminGuard/admin-guard-guard';
 import { ProfilePage } from './pages/profile/profile-page/profile-page';
 import { CartPage } from './pages/cart/cart-page/cart-page';
 import { AddBookForm } from './components/shared/forms/add-book-form/add-book-form';
+import { AdministrationLiteraryGenrePage } from './pages/dashboard/administration-literary-genre-page/administration-literary-genre-page';
+import { AdministrationAuthorsPage } from './pages/dashboard/administration-authors-page/administration-authors-page';
 
 
 
@@ -63,6 +65,14 @@ export const routes: Routes = [
                     {
                         path: 'administration-books',
                         component: AdministrationBookPage
+                    },
+                    {
+                        path: 'administration-literaryGenres',
+                        component: AdministrationLiteraryGenrePage
+                    },
+                    {
+                        path: 'administration-authors',
+                        component: AdministrationAuthorsPage
                     },
                     {
                         path: 'administration-users',
