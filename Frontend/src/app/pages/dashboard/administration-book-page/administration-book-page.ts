@@ -6,10 +6,11 @@ import { forkJoin } from 'rxjs';
 import { LiteraryGenreService } from '../../../services/LiteraryGenreService/literary-genre-service';
 import { isPlatformBrowser } from '@angular/common';
 import { AddBookForm } from "../../../components/shared/forms/add-book-form/add-book-form";
+import { UpdateBookForm } from "../../../components/shared/forms/update-book-form/update-book-form";
 
 @Component({
   selector: 'app-administration-book-page',
-  imports: [AddBookForm],
+  imports: [AddBookForm, UpdateBookForm],
   templateUrl: './administration-book-page.html',
   styleUrl: './administration-book-page.css'
 })
@@ -21,6 +22,8 @@ export class AdministrationBookPage implements OnInit {
   error: string | null = null;
   showContent: boolean = false;
   showAddForm: boolean = false;
+  showUpdateForm: boolean = false;
+  bookIdToEdit: number | null = null;
 
   constructor(
     private readonly bookService: BookService,
@@ -29,18 +32,34 @@ export class AdministrationBookPage implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     if (isPlatformBrowser(this.platformId)) {
-
       this.loadAllData();
     }
   }
-  //visible form
-  toggleAddForm() {
-    this.showAddForm = !this.showAddForm;
+
+  openUpdateForm(bookId: number) {
+    this.bookIdToEdit = bookId;
+    this.showUpdateForm = true;
+    this.showAddForm = false;
   }
 
-  //getAllBooks
+  closeUpdateForm() {
+    this.showUpdateForm = false;
+    this.bookIdToEdit = null;
+  }
+
+  reloadBooks() {
+    this.loadAllData();
+  }
+
+  toggleAddForm() {
+    this.showAddForm = !this.showAddForm;
+
+    if (this.showAddForm) {
+      this.closeUpdateForm();
+    }
+  }
+
   loadAllData() {
     this.loading = true;
     this.error = null;
@@ -63,9 +82,7 @@ export class AdministrationBookPage implements OnInit {
     });
   }
 
-  //deleteBook
   deleteBook(bookId: number) {
-
     const confirmation = confirm("¿Estás seguro de que deseas eliminar este libro?");
     if (!confirmation) {
       return;
@@ -73,7 +90,7 @@ export class AdministrationBookPage implements OnInit {
 
     this.bookService.deleteBook(bookId).subscribe({
       next: () => {
-        this.books = this.books.filter(book => book.id !== bookId);
+        this.reloadBooks();
         alert("Libro eliminado exitosamente.");
       },
       error: (err) => {
@@ -83,5 +100,4 @@ export class AdministrationBookPage implements OnInit {
       }
     });
   }
-
 }

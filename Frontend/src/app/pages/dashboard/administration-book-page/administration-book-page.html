@@ -37,6 +37,7 @@
                         <th class="py-2 px-4 text-left text-gray-600 font-medium">Genero</th>
                         <th class="py-2 px-4 text-left text-gray-600 font-medium">Precio</th>
                         <th class="py-2 px-4 text-left text-gray-600 font-medium">Stock</th>
+                        <th class="py-2 px-4 text-left text-gray-600 font-medium">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,7 +50,7 @@
                         <td class="py-3 px-4 text-gray-800">{{book.price}}</td>
                         <td class="py-3 px-4 text-gray-800">{{book.stock}}</td>
                         <td class="py-4 px-6 flex space-x-2">
-                            <button
+                            <button (click)="openUpdateForm(book.id)"
                                 class="bg-blue-100 hover:bg-blue-200 text-black py-2 px-3 rounded-lg text-sm font-medium transition-colors cursor-pointer">
                                 Editar
                             </button>
@@ -76,9 +77,25 @@
         (click)="toggleAddForm()">
         <!-- content modal -->
         <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-0" (click)="$event.stopPropagation()">
-            <app-add-book-form></app-add-book-form>
+            <app-add-book-form (bookCreated)="reloadBooks()"></app-add-book-form>
         </div>
     </div>
     }
+
+    <!--  UpdateBookForm  -->
+    @if(showUpdateForm && bookIdToEdit !== null) {
+    <div class="fixed inset-0 bg-white/5 backdrop-blur-sm flex items-center justify-center z-50 p-4 "
+        (click)="closeUpdateForm()"> <!-- Cierra el modal al hacer clic fuera -->
+        <!-- content modal -->
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-0" (click)="$event.stopPropagation()">
+            <!-- Pasa el ID del libro al componente -->
+            <!-- Asegúrate de que UpdateBookForm emita eventos para notificar actualización y cierre -->
+            <app-update-book-form [bookId]="bookIdToEdit" (bookUpdated)="reloadBooks()"
+                (closeModal)="closeUpdateForm()"> <!-- Cierra el modal -->
+            </app-update-book-form>
+        </div>
+    </div>
+    }
+
 
 </div>
