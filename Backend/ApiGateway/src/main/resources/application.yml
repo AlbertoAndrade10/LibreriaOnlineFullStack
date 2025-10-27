@@ -29,6 +29,11 @@ spring:
           uri: lb://BOOKSERVICE
           predicates:
             - Path=/literary-genres/**
+        # -->> CartSerice routes <<--
+        - id: CartService
+          uri: lb://CARTSERVICE
+          predicates:
+            - Path=/cart/** 
 
 eureka:
   client:

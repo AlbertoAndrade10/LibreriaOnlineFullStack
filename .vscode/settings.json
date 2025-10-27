@@ -2,6 +2,7 @@
     "java.compile.nullAnalysis.mode": "automatic",
     "java.configuration.updateBuildConfiguration": "interactive",
     "java.project.sourcePaths": [
-        "Frontend"
+        "Frontend",
+        "Backend/CartService/src/main/java/com/porfolio/CartService"
     ]
 }
